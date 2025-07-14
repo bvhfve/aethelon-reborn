@@ -1,0 +1,20 @@
+{
+  "entity.aethelon.aethelon": "Aethelon",
+  "item.aethelon.aethelon_spawn_egg": "Aethelon Spawn Egg",
+  
+  "aethelon.config.title": "Aethelon Configuration",
+  "aethelon.config.spawn": "Spawn Settings",
+  "aethelon.config.behavior": "Behavior Settings",
+  "aethelon.config.island": "Island Settings",
+  "aethelon.config.explosion": "Explosion Settings",
+  
+  "aethelon.command.spawn.success": "Spawned Aethelon at %s",
+  "aethelon.command.spawn.failed": "Failed to spawn Aethelon",
+  "aethelon.command.list.count": "Found %d Aethelons in the world",
+  "aethelon.command.remove.success": "Removed %d Aethelons",
+  
+  "aethelon.state.idle": "Idle",
+  "aethelon.state.moving": "Moving",
+  "aethelon.state.transitioning": "Transitioning",
+  "aethelon.state.damaged": "Agitated"
+}
