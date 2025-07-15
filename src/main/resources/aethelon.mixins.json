@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "refmap": "aethelon.refmap.json",
   "mixins": [
+    "EntityMixin"
   ],
   "client": [
   ],

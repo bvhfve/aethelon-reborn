@@ -53,7 +53,7 @@ public class ModEntityTypes {
                     Registries.ENTITY_TYPE,
                     AETHELON_KEY,
                     FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, AethelonEntity::new)
-                            .dimensions(EntityDimensions.fixed(32.0f, 16.0f)) // Truly massive world turtle - 32x16 blocks!
+                            .dimensions(EntityDimensions.fixed(32.0f, 5.0f)) // Massive world turtle - 32 wide x 5 high blocks
                             .trackRangeChunks(64) // Even larger tracking range for massive entity
                             .trackedUpdateRate(1) // Frequent updates for smooth movement
                             .build(AETHELON_KEY)
