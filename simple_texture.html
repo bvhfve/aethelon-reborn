@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aethelon Texture Generator</title>
+</head>
+<body>
+    <canvas id="textureCanvas" width="256" height="128" style="border: 1px solid black; image-rendering: pixelated; width: 512px; height: 256px;"></canvas>
+    <br>
+    <button onclick="downloadTexture()">Download aethelon.png</button>
+    
+    <script>
+        const canvas = document.getElementById('textureCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Color palette for Concept 1: Ancient Ocean Guardian
+        const colors = {
+            deepBlue: '#1A4D66',
+            teal: '#2D8A8A',
+            agedGreen: '#4A6B4A',
+            mossGreen: '#6B8E23',
+            coralPink: '#FF7F7F',
+            bioCyan: '#00FFFF',
+            shellBrown: '#8B4513',
+            bellyTan: '#D2B48C',
+            darkBlue: '#0F3246',
+            lightTeal: '#46B4B4'
+        };
+        
+        // Helper function to create gradient
+        function createGradient(x, y, w, h, color1, color2, direction = 'horizontal') {
+            const gradient = direction === 'horizontal' 
+                ? ctx.createLinearGradient(x, y, x + w, y)
+                : ctx.createLinearGradient(x, y, x, y + h);
+            gradient.addColorStop(0, color1);
+            gradient.addColorStop(1, color2);
+            return gradient;
+        }
+        
+        // Helper function to add scale texture
+        function addScales(x, y, w, h, baseColor, scaleSize = 3) {
+            ctx.fillStyle = baseColor;
+            ctx.fillRect(x, y, w, h);
+            
+            ctx.fillStyle = colors.darkBlue;
+            for (let sy = y; sy < y + h; sy += scaleSize) {
+                for (let sx = x; sx < x + w; sx += scaleSize) {
+                    if ((sx + sy) % (scaleSize * 2) === 0) {
+                        ctx.fillRect(sx, sy, 1, 1);
+                    }
+                }
+            }
+        }
+        
+        // Helper function to add bioluminescent spots
+        function addBioSpots(x, y, w, h, count = 3) {
+            ctx.fillStyle = colors.bioCyan;
+            for (let i = 0; i < count; i++) {
+                const spotX = x + Math.floor(Math.random() * (w - 4)) + 2;
+                const spotY = y + Math.floor(Math.random() * (h - 4)) + 2;
+                ctx.fillRect(spotX, spotY, 2, 2);
+            }
+        }
+        
+        // Clear canvas
+        ctx.clearRect(0, 0, 256, 128);
+        
+        // BODY SECTION (0,0 - 80,48)
+        
+        // Body front (0, 0, 24, 16)
+        ctx.fillStyle = createGradient(0, 0, 24, 16, colors.teal, colors.deepBlue, 'vertical');
+        ctx.fillRect(0, 0, 24, 16);
+        addScales(0, 0, 24, 16, colors.teal);
+        
+        // Body bottom (0, 16, 24, 16)
+        ctx.fillStyle = createGradient(0, 16, 24, 16, colors.bellyTan, colors.lightTeal, 'horizontal');
+        ctx.fillRect(0, 16, 24, 16);
+        
+        // Body right side (24, 0, 32, 16)
+        ctx.fillStyle = createGradient(24, 0, 32, 16, colors.deepBlue, colors.teal, 'vertical');
+        ctx.fillRect(24, 0, 32, 16);
+        addScales(24, 0, 32, 16, colors.deepBlue);
+        addBioSpots(24, 0, 32, 16, 3);
+        
+        // Body top (24, 16, 32, 16)
+        ctx.fillStyle = createGradient(24, 16, 32, 16, colors.agedGreen, colors.deepBlue, 'horizontal');
+        ctx.fillRect(24, 16, 32, 16);
+        addScales(24, 16, 32, 16, colors.agedGreen);
+        
+        // Body back (56, 0, 24, 16)
+        ctx.fillStyle = createGradient(56, 0, 24, 16, colors.deepBlue, colors.darkBlue, 'vertical');
+        ctx.fillRect(56, 0, 24, 16);
+        addScales(56, 0, 24, 16, colors.deepBlue);
+        
+        // Body left side (56, 16, 24, 16)
+        ctx.fillStyle = createGradient(56, 16, 24, 16, colors.teal, colors.deepBlue, 'vertical');
+        ctx.fillRect(56, 16, 24, 16);
+        addScales(56, 16, 24, 16, colors.teal);
+        addBioSpots(56, 16, 24, 16, 2);
+        
+        // HEAD SECTION (0,48 - 48,68)
+        
+        // Head right (0, 48, 12, 8)
+        ctx.fillStyle = createGradient(0, 48, 12, 8, colors.teal, colors.deepBlue);
+        ctx.fillRect(0, 48, 12, 8);
+        addScales(0, 48, 12, 8, colors.teal, 2);
+        
+        // Head front (12, 48, 12, 8) - Add eyes
+        ctx.fillStyle = createGradient(12, 48, 12, 8, colors.deepBlue, colors.teal);
+        ctx.fillRect(12, 48, 12, 8);
+        // Eyes
+        ctx.fillStyle = colors.bioCyan;
+        ctx.fillRect(14, 50, 2, 2); // Left eye
+        ctx.fillRect(20, 50, 2, 2); // Right eye
+        // Nostrils
+        ctx.fillStyle = colors.darkBlue;
+        ctx.fillRect(17, 53, 1, 1);
+        ctx.fillRect(19, 53, 1, 1);
+        
+        // Head left (24, 48, 12, 8)
+        ctx.fillStyle = createGradient(24, 48, 12, 8, colors.deepBlue, colors.teal);
+        ctx.fillRect(24, 48, 12, 8);
+        addScales(24, 48, 12, 8, colors.teal, 2);
+        
+        // Head back (36, 48, 12, 8)
+        ctx.fillStyle = createGradient(36, 48, 12, 8, colors.agedGreen, colors.deepBlue);
+        ctx.fillRect(36, 48, 12, 8);
+        
+        // Head top (0, 56, 12, 12)
+        ctx.fillStyle = createGradient(0, 56, 12, 12, colors.agedGreen, colors.deepBlue);
+        ctx.fillRect(0, 56, 12, 12);
+        addScales(0, 56, 12, 12, colors.agedGreen, 2);
+        addBioSpots(0, 56, 12, 12, 2);
+        
+        // Head bottom (12, 56, 12, 12)
+        ctx.fillStyle = createGradient(12, 56, 12, 12, colors.bellyTan, colors.lightTeal);
+        ctx.fillRect(12, 56, 12, 12);
+        
+        // SHELL SECTION (80,0 - 176,52)
+        
+        // Shell top (80, 0, 32, 40) - Most detailed area
+        ctx.fillStyle = createGradient(80, 0, 32, 40, colors.shellBrown, colors.agedGreen);
+        ctx.fillRect(80, 0, 32, 40);
+        
+        // Add hexagonal pattern on shell
+        ctx.strokeStyle = colors.mossGreen;
+        ctx.lineWidth = 1;
+        for (let row = 0; row < 40; row += 6) {
+            for (let col = 0; col < 32; col += 6) {
+                const xOffset = (Math.floor(row / 6) % 2) * 3;
+                const hexX = 80 + col + xOffset;
+                const hexY = row;
+                
+                if (hexX + 6 <= 112 && hexY + 6 <= 40) {
+                    // Draw hexagon (simplified as rectangle for canvas)
+                    ctx.strokeRect(hexX, hexY, 5, 5);
+                    
+                    // Add coral growths occasionally
+                    if ((col + row) % 18 === 0) {
+                        ctx.fillStyle = colors.coralPink;
+                        ctx.fillRect(hexX + 2, hexY + 2, 2, 2);
+                    }
+                }
+            }
+        }
+        
+        // Shell sides
+        // Shell front (112, 0, 40, 12)
+        ctx.fillStyle = createGradient(112, 0, 40, 12, colors.shellBrown, colors.agedGreen);
+        ctx.fillRect(112, 0, 40, 12);
+        addScales(112, 0, 40, 12, colors.shellBrown, 2);
+        
+        // Shell right (152, 0, 32, 12)
+        ctx.fillStyle = createGradient(152, 0, 32, 12, colors.agedGreen, colors.mossGreen);
+        ctx.fillRect(152, 0, 32, 12);
+        
+        // Shell back (184, 0, 40, 12)
+        ctx.fillStyle = createGradient(184, 0, 40, 12, colors.shellBrown, colors.agedGreen);
+        ctx.fillRect(184, 0, 40, 12);
+        addScales(184, 0, 40, 12, colors.shellBrown, 2);
+        
+        // Shell left (224, 0, 32, 12)
+        ctx.fillStyle = createGradient(224, 0, 32, 12, colors.agedGreen, colors.mossGreen);
+        ctx.fillRect(224, 0, 32, 12);
+        
+        // LEGS SECTION (0,68 - 32,32)
+        
+        const flipperPositions = [
+            [0, 68, 8, 8],    // Top
+            [8, 68, 8, 8],    // Bottom
+            [16, 68, 8, 8],   // Front
+            [24, 68, 8, 8],   // Back
+            [0, 76, 8, 8],    // Left
+            [8, 76, 8, 8],    // Right
+        ];
+        
+        flipperPositions.forEach(([x, y, w, h]) => {
+            ctx.fillStyle = createGradient(x, y, w, h, colors.deepBlue, colors.teal);
+            ctx.fillRect(x, y, w, h);
+            addScales(x, y, w, h, colors.deepBlue, 1);
+            
+            // Add webbing lines
+            ctx.strokeStyle = colors.darkBlue;
+            ctx.lineWidth = 1;
+            for (let i = 1; i < w; i += 2) {
+                ctx.beginPath();
+                ctx.moveTo(x + i, y);
+                ctx.lineTo(x + i, y + h);
+                ctx.stroke();
+            }
+        });
+        
+        // Add barnacles in empty spaces
+        const barnacleSpots = [[50, 70], [60, 75], [70, 80], [100, 50], [150, 20]];
+        barnacleSpots.forEach(([bx, by]) => {
+            if (bx < 253 && by < 125) {
+                ctx.fillStyle = colors.coralPink;
+                ctx.fillRect(bx, by, 3, 3);
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fillRect(bx + 1, by + 1, 1, 1);
+            }
+        });
+        
+        function downloadTexture() {
+            const link = document.createElement('a');
+            link.download = 'aethelon.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>

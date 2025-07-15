@@ -1,5 +1,6 @@
 package com.bvhfve.aethelon;
 
+import com.bvhfve.aethelon.config.AethelonConfig;
 import com.bvhfve.aethelon.registry.ModBiomeModifications;
 import com.bvhfve.aethelon.registry.ModEntityTypes;
 import com.bvhfve.aethelon.registry.ModItems;
@@ -27,8 +28,12 @@ public class Aethelon implements ModInitializer {
         LOGGER.info("Initializing Aethelon - The World Turtle mod v{}", getModVersion());
         
         try {
+            // Step 0: Initialize configuration system first
+            LOGGER.info("Initializing configuration system...");
+            AethelonConfig.initialize();
+            
             // Phase 1: Basic Entity Foundation
-            // Order is critical: entities -> items -> biome modifications
+            // Order is critical: config -> entities -> items -> biome modifications
             
             LOGGER.info("Phase 1: Registering core components...");
             

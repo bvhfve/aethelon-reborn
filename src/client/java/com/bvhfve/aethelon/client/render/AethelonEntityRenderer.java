@@ -18,7 +18,7 @@ public class AethelonEntityRenderer extends MobEntityRenderer<AethelonEntity, Li
     private static final Identifier TEXTURE = Identifier.of(Aethelon.MOD_ID, "textures/entity/aethelon.png");
     
     public AethelonEntityRenderer(EntityRendererFactory.Context context) {
-        super(context, new AethelonEntityModel(context.getPart(com.bvhfve.aethelon.client.model.ModEntityModelLayers.AETHELON)), 4.0f);
+        super(context, new AethelonEntityModel(context.getPart(com.bvhfve.aethelon.client.model.ModEntityModelLayers.AETHELON)), 16.0f); // Massive shadow radius for world turtle
     }
     
     @Override

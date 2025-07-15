@@ -40,53 +40,53 @@ public class AethelonEntityModel extends EntityModel<LivingEntityRenderState> {
         ModelData modelData = new ModelData();
         ModelPartData modelPartData = modelData.getRoot();
         
-        // Body - main turtle body
+        // Body - massive turtle body (scaled for world turtle)
         modelPartData.addChild("body", 
             ModelPartBuilder.create()
                 .uv(0, 0)
-                .cuboid(-6.0F, -4.0F, -8.0F, 12.0F, 8.0F, 16.0F),
+                .cuboid(-12.0F, -8.0F, -16.0F, 24.0F, 16.0F, 32.0F), // 4x larger
             ModelTransform.pivot(0.0F, 20.0F, 0.0F));
         
-        // Head - turtle head extending forward
+        // Head - massive turtle head extending forward
         modelPartData.addChild("head",
             ModelPartBuilder.create()
-                .uv(0, 24)
-                .cuboid(-3.0F, -2.0F, -6.0F, 6.0F, 4.0F, 6.0F),
-            ModelTransform.pivot(0.0F, 18.0F, -8.0F));
+                .uv(0, 48)
+                .cuboid(-6.0F, -4.0F, -12.0F, 12.0F, 8.0F, 12.0F), // 4x larger
+            ModelTransform.pivot(0.0F, 16.0F, -16.0F));
         
-        // Shell - large shell on back (where island will sit)
+        // Shell - enormous shell on back (where island will sit)
         modelPartData.addChild("shell",
             ModelPartBuilder.create()
-                .uv(40, 0)
-                .cuboid(-8.0F, -6.0F, -10.0F, 16.0F, 6.0F, 20.0F),
-            ModelTransform.pivot(0.0F, 16.0F, 0.0F));
+                .uv(80, 0)
+                .cuboid(-16.0F, -12.0F, -20.0F, 32.0F, 12.0F, 40.0F), // 4x larger
+            ModelTransform.pivot(0.0F, 12.0F, 0.0F));
         
-        // Legs - four turtle flippers
+        // Legs - massive turtle flippers
         modelPartData.addChild("front_left_leg",
             ModelPartBuilder.create()
-                .uv(0, 34)
-                .cuboid(-2.0F, 0.0F, -2.0F, 4.0F, 4.0F, 4.0F),
-            ModelTransform.pivot(4.0F, 20.0F, -4.0F));
+                .uv(0, 68)
+                .cuboid(-4.0F, 0.0F, -4.0F, 8.0F, 8.0F, 8.0F), // 4x larger
+            ModelTransform.pivot(8.0F, 20.0F, -8.0F));
         
         modelPartData.addChild("front_right_leg",
             ModelPartBuilder.create()
-                .uv(0, 34)
-                .cuboid(-2.0F, 0.0F, -2.0F, 4.0F, 4.0F, 4.0F),
-            ModelTransform.pivot(-4.0F, 20.0F, -4.0F));
+                .uv(0, 68)
+                .cuboid(-4.0F, 0.0F, -4.0F, 8.0F, 8.0F, 8.0F), // 4x larger
+            ModelTransform.pivot(-8.0F, 20.0F, -8.0F));
         
         modelPartData.addChild("back_left_leg",
             ModelPartBuilder.create()
-                .uv(0, 34)
-                .cuboid(-2.0F, 0.0F, -2.0F, 4.0F, 4.0F, 4.0F),
-            ModelTransform.pivot(4.0F, 20.0F, 4.0F));
+                .uv(0, 68)
+                .cuboid(-4.0F, 0.0F, -4.0F, 8.0F, 8.0F, 8.0F), // 4x larger
+            ModelTransform.pivot(8.0F, 20.0F, 8.0F));
         
         modelPartData.addChild("back_right_leg",
             ModelPartBuilder.create()
-                .uv(0, 34)
-                .cuboid(-2.0F, 0.0F, -2.0F, 4.0F, 4.0F, 4.0F),
-            ModelTransform.pivot(-4.0F, 20.0F, 4.0F));
+                .uv(0, 68)
+                .cuboid(-4.0F, 0.0F, -4.0F, 8.0F, 8.0F, 8.0F), // 4x larger
+            ModelTransform.pivot(-8.0F, 20.0F, 8.0F));
         
-        return TexturedModelData.of(modelData, 128, 64);
+        return TexturedModelData.of(modelData, 256, 128); // Larger texture for massive model
     }
     
     @Override

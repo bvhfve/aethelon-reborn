@@ -1,0 +1,64 @@
+AETHELON TURTLE TEXTURE TEMPLATE - 256x128 pixels
+Concept 1: Ancient Ocean Guardian
+
+Legend:
+B = Deep Blue (#1A4D66)    T = Teal (#2D8A8A)         G = Aged Green (#4A6B4A)
+M = Moss Green (#6B8E23)   C = Coral Pink (#FF7F7F)   Y = Bio Cyan (#00FFFF)
+S = Shell Brown (#8B4513)  N = Belly Tan (#D2B48C)    D = Dark Blue (#0F3246)
+L = Light Teal (#46B4B4)   . = Transparent
+
+BODY SECTION (0,0 - 80,48):
+     0    8   16   24   32   40   48   56   64   72   80
+  0  TTTTTTTTTTTTTTTTTTTTTTTT BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB BBBBBBBBBBBBBBBBBBBBBBBB
+  8  TTTTTTTTTTTTTTTTTTTTTTTT BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB BBBBBBBBBBBBBBBBBBBBBBBB
+ 16  NNNNNNNNNNNNNNNNNNNNNNNN GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG TTTTTTTTTTTTTTTTTTTTTTTT
+ 24  NNNNNNNNNNNNNNNNNNNNNNNN GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG TTTTTTTTTTTTTTTTTTTTTTTT
+ 32  NNNNNNNNNNNNNNNNNNNNNNNN GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG TTTTTTTTTTTTTTTTTTTTTTTT
+ 40  NNNNNNNNNNNNNNNNNNNNNNNN GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG TTTTTTTTTTTTTTTTTTTTTTTT
+ 48  ════════════════════════════════════════════════════════════════════════════════
+
+HEAD SECTION (0,48 - 48,68):
+     0    8   16   24   32   40   48
+ 48  TTTTTTTT BBBYYBBB BBBBBBBB GGGGGGGG
+ 56  TTTTTTTT BBBBBBBB BBBBBBBB GGGGGGGG
+ 64  GGGGGGGG NNNNNNNN ........ ........
+ 68  ════════════════════════════════════
+
+SHELL SECTION (80,0 - 256,52):
+     80   88   96  104  112  120  128  136  144  152  160  168  176  184  192  200  208  216  224  232  240  248  256
+  0  SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+  8  SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+ 16  SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS ..................................... ................................ ..................................... ................................
+ 24  SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS ..................................... ................................ ..................................... ................................
+ 32  SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS ..................................... ................................ ..................................... ................................
+ 40  SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS ..................................... ................................ ..................................... ................................
+ 48  ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+LEGS SECTION (0,68 - 32,100):
+     0    8   16   24   32
+ 68  BBBBBBBB BBBBBBBB BBBBBBBB BBBBBBBB
+ 76  BBBBBBBB BBBBBBBB ........ ........
+ 84  ........ ........ ........ ........
+ 92  ........ ........ ........ ........
+100  ════════════════════════════════════
+
+SPECIAL FEATURES TO ADD:
+1. Eyes at (14,50) and (20,52) - use Bio Cyan (Y)
+2. Nostrils at (17,53) and (19,53) - use Dark Blue (D)
+3. Hexagonal pattern on shell top - use Moss Green (M) outlines
+4. Coral growths - add Coral Pink (C) spots in shell hexagons
+5. Bioluminescent spots - add Bio Cyan (Y) throughout body
+6. Scale texture - add darker outlines to all sections
+7. Barnacles - add Coral Pink (C) circles with white centers
+
+GRADIENTS TO APPLY:
+- Body sections: vertical gradients from darker (top) to lighter (bottom)
+- Shell: horizontal gradients from brown to green
+- Head: subtle gradients following the base colors
+- Flippers: gradients from deep blue to teal
+
+FINAL TOUCHES:
+- Add weathering marks and age spots
+- Ensure smooth color transitions
+- Test bioluminescent spots are visible
+- Verify all UV sections are properly filled

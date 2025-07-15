@@ -1,5 +1,6 @@
 package com.bvhfve.aethelon.entity;
 
+import com.bvhfve.aethelon.config.AethelonConfig;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.GoalSelector;
@@ -40,13 +41,15 @@ public class AethelonEntity extends WaterCreatureEntity {
     /**
      * Creates the default attributes for Aethelon entities
      * Based on patterns from knowledge pool entity examples
+     * Uses configurable values for health, movement speed, and scale
      */
     public static DefaultAttributeContainer.Builder createAethelonAttributes() {
         return WaterCreatureEntity.createMobAttributes()
-                .add(EntityAttributes.MAX_HEALTH, 1000.0) // Massive health pool
-                .add(EntityAttributes.MOVEMENT_SPEED, 0.1) // Very slow movement
-                .add(EntityAttributes.FOLLOW_RANGE, 64.0)  // Large detection range
-                .add(EntityAttributes.KNOCKBACK_RESISTANCE, 1.0); // Immune to knockback
+                .add(EntityAttributes.MAX_HEALTH, AethelonConfig.INSTANCE != null ? AethelonConfig.INSTANCE.health : 2000.0)
+                .add(EntityAttributes.MOVEMENT_SPEED, AethelonConfig.INSTANCE != null ? AethelonConfig.INSTANCE.movement_speed : 0.05)
+                .add(EntityAttributes.FOLLOW_RANGE, AethelonConfig.INSTANCE != null ? AethelonConfig.INSTANCE.follow_range : 128.0)
+                .add(EntityAttributes.KNOCKBACK_RESISTANCE, AethelonConfig.INSTANCE != null ? AethelonConfig.INSTANCE.knockback_resistance : 1.0)
+                .add(EntityAttributes.SCALE, AethelonConfig.getTurtleSizeScale()); // Configurable size scale
     }
     
     @Override
@@ -90,6 +93,7 @@ public class AethelonEntity extends WaterCreatureEntity {
     /**
      * Custom spawn conditions for Aethelon entities
      * Based on patterns from knowledge pool examples
+     * Uses configurable values for water depth, clearance, and spawn rarity
      * 
      * @param type The entity type
      * @param world The world access
@@ -100,15 +104,21 @@ public class AethelonEntity extends WaterCreatureEntity {
      */
     public static boolean canSpawn(EntityType<? extends WaterCreatureEntity> type, WorldAccess world, 
                                   SpawnReason spawnReason, BlockPos pos, Random random) {
-        // Must be in deep water (at least 15 blocks deep)
-        for (int i = 0; i < 15; i++) {
+        // Get configurable water depth requirement
+        int waterDepthRequired = AethelonConfig.getWaterDepthRequired();
+        
+        // Must be in very deep water (configurable depth for massive turtle)
+        for (int i = 0; i < waterDepthRequired; i++) {
             if (!world.getBlockState(pos.down(i)).getFluidState().isIn(net.minecraft.registry.tag.FluidTags.WATER)) {
                 return false;
             }
         }
         
-        // Must have clear space above for shell/island (25 blocks)
-        for (int i = 1; i <= 25; i++) {
+        // Get configurable clearance above requirement
+        int clearanceRequired = AethelonConfig.getClearanceAboveRequired();
+        
+        // Must have clear space above for shell/island (configurable clearance)
+        for (int i = 1; i <= clearanceRequired; i++) {
             if (!world.getBlockState(pos.up(i)).isAir() && 
                 !world.getBlockState(pos.up(i)).getFluidState().isIn(net.minecraft.registry.tag.FluidTags.WATER)) {
                 return false;
@@ -130,7 +140,8 @@ public class AethelonEntity extends WaterCreatureEntity {
             return false;
         }
         
-        // Additional rarity check - only 10% chance even if all conditions are met
-        return random.nextFloat() < 0.1f;
+        // Configurable rarity check
+        float spawnRarity = AethelonConfig.getSpawnRarity();
+        return random.nextFloat() < spawnRarity;
     }
 }
