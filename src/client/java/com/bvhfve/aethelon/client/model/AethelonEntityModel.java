@@ -1,19 +1,17 @@
 package com.bvhfve.aethelon.client.model;
 
-import com.bvhfve.aethelon.Aethelon;
-import com.bvhfve.aethelon.entity.AethelonEntity;
 import net.minecraft.client.model.*;
-import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.EntityModel;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
-import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.render.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Identifier;
 
 /**
  * Model for the Aethelon entity
  * Defines the 3D structure of the world turtle
+ * Updated for Minecraft 1.21.4 render state system
  */
-public class AethelonEntityModel<T extends AethelonEntity> extends EntityModel<T> {
+public class AethelonEntityModel extends EntityModel<LivingEntityRenderState> {
     
     // Layer location is now handled by ModEntityModelLayers
     
@@ -27,6 +25,7 @@ public class AethelonEntityModel<T extends AethelonEntity> extends EntityModel<T
     private final ModelPart backRightLeg;
     
     public AethelonEntityModel(ModelPart root) {
+        super(root, RenderLayer::getEntityCutoutNoCull);
         this.root = root;
         this.body = root.getChild("body");
         this.head = root.getChild("head");
@@ -91,23 +90,20 @@ public class AethelonEntityModel<T extends AethelonEntity> extends EntityModel<T
     }
     
     @Override
-    public void setAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        // Basic swimming animation
-        this.head.yaw = netHeadYaw * 0.017453292F;
-        this.head.pitch = headPitch * 0.017453292F;
+    public void setAngles(LivingEntityRenderState renderState) {
+        super.setAngles(renderState);
+        
+        // Basic swimming animation using render state
+        this.head.yaw = renderState.yawDegrees * 0.017453292F;
+        this.head.pitch = renderState.pitch * 0.017453292F;
         
         // Gentle leg movement for swimming
-        float legSwing = limbSwing * 0.6662F;
-        float legAmount = limbSwingAmount * 0.5F;
+        float legSwing = renderState.limbFrequency * 0.6662F;
+        float legAmount = renderState.limbAmplitudeMultiplier * 0.5F;
         
         this.frontLeftLeg.roll = (float) Math.cos(legSwing) * legAmount;
         this.frontRightLeg.roll = (float) Math.cos(legSwing + Math.PI) * legAmount;
         this.backLeftLeg.roll = (float) Math.cos(legSwing + Math.PI) * legAmount;
         this.backRightLeg.roll = (float) Math.cos(legSwing) * legAmount;
-    }
-    
-    @Override
-    public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, int color) {
-        root.render(matrices, vertexConsumer, light, overlay, color);
     }
 }

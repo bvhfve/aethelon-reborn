@@ -1,11 +1,18 @@
 package com.bvhfve.aethelon.entity;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.GoalSelector;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.WaterCreatureEntity;
+import net.minecraft.registry.tag.BiomeTags;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 
 /**
  * The Aethelon Entity - A colossal world turtle that carries islands on its back
@@ -78,5 +85,52 @@ public class AethelonEntity extends WaterCreatureEntity {
     
     public int getStateTimer() {
         return stateTimer;
+    }
+    
+    /**
+     * Custom spawn conditions for Aethelon entities
+     * Based on patterns from knowledge pool examples
+     * 
+     * @param type The entity type
+     * @param world The world access
+     * @param spawnReason The spawn reason
+     * @param pos The spawn position
+     * @param random Random instance
+     * @return true if the entity can spawn at this location
+     */
+    public static boolean canSpawn(EntityType<? extends WaterCreatureEntity> type, WorldAccess world, 
+                                  SpawnReason spawnReason, BlockPos pos, Random random) {
+        // Must be in deep water (at least 15 blocks deep)
+        for (int i = 0; i < 15; i++) {
+            if (!world.getBlockState(pos.down(i)).getFluidState().isIn(net.minecraft.registry.tag.FluidTags.WATER)) {
+                return false;
+            }
+        }
+        
+        // Must have clear space above for shell/island (25 blocks)
+        for (int i = 1; i <= 25; i++) {
+            if (!world.getBlockState(pos.up(i)).isAir() && 
+                !world.getBlockState(pos.up(i)).getFluidState().isIn(net.minecraft.registry.tag.FluidTags.WATER)) {
+                return false;
+            }
+        }
+        
+        // Check world conditions
+        if (world.getDifficulty() == Difficulty.PEACEFUL) {
+            return false;
+        }
+        
+        // Must be in ocean biome
+        if (!world.getBiome(pos).isIn(BiomeTags.IS_OCEAN)) {
+            return false;
+        }
+        
+        // Low light level for rarity (deep ocean spawning)
+        if (world.getLightLevel(pos) > 7) {
+            return false;
+        }
+        
+        // Additional rarity check - only 10% chance even if all conditions are met
+        return random.nextFloat() < 0.1f;
     }
 }
