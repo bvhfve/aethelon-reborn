@@ -18,6 +18,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
+import java.util.List;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
@@ -58,11 +59,79 @@ public class AethelonEntity extends WaterCreatureEntity {
      */
     public static DefaultAttributeContainer.Builder createAethelonAttributes() {
         return WaterCreatureEntity.createMobAttributes()
-                .add(EntityAttributes.MAX_HEALTH, AethelonConfig.INSTANCE != null ? AethelonConfig.INSTANCE.health : 1000.0) // Reduced from 2000
+                .add(EntityAttributes.MAX_HEALTH, AethelonConfig.INSTANCE != null ? AethelonConfig.INSTANCE.health : 2000.0) // Increased from 1000 to 2000
                 .add(EntityAttributes.MOVEMENT_SPEED, AethelonConfig.INSTANCE != null ? AethelonConfig.INSTANCE.movement_speed : 0.02) // Reduced from 0.05
                 .add(EntityAttributes.FOLLOW_RANGE, 32.0) // Drastically reduced from 128.0
                 .add(EntityAttributes.KNOCKBACK_RESISTANCE, AethelonConfig.INSTANCE != null ? AethelonConfig.INSTANCE.knockback_resistance : 1.0)
                 .add(EntityAttributes.SCALE, Math.min(AethelonConfig.getTurtleSizeScale(), 2.0f)); // Capped at 2x for performance
+    }
+    
+    public boolean canTakeDamage() {
+        // Allow damage but prevent suffocation
+        return true;
+    }
+    
+    @Override
+    public boolean damage(net.minecraft.server.world.ServerWorld world, net.minecraft.entity.damage.DamageSource source, float amount) {
+        // Prevent suffocation damage - world turtles are too large to suffocate
+        if (source.isOf(net.minecraft.entity.damage.DamageTypes.IN_WALL) || 
+            source.isOf(net.minecraft.entity.damage.DamageTypes.CRAMMING)) {
+            return false; // Ignore wall/cramming damage
+        }
+        
+        // Allow other types of damage
+        return super.damage(world, source, amount);
+    }
+    
+    protected boolean isInWall() {
+        // World turtles are too large to be considered "in wall"
+        // This prevents suffocation checks entirely
+        return false;
+    }
+    
+    public boolean canAvoidTraps() {
+        // World turtles can't be trapped by normal means
+        return true;
+    }
+    
+    public boolean cannotDespawn() {
+        // World turtles should never despawn - they're too important
+        return true;
+    }
+    
+    // Note: canBreatheInWater() is final in parent class, can't override
+    // Turtle inherits water breathing from WaterCreatureEntity
+    
+    public boolean canWalkOnPowderedSnow() {
+        // Large turtles don't sink into powder snow
+        return true;
+    }
+    
+    protected boolean canClimb() {
+        // World turtles don't climb
+        return false;
+    }
+    
+    // ========== COLLISION SYSTEM FOR STANDING ON TURTLE ==========
+    // Now handled by AethelonEntityCollisionMixin for better integration
+    
+    @Override
+    public void pushAwayFrom(Entity entity) {
+        // Don't push entities away - this would prevent standing on turtle
+        // Empty implementation allows entities to stay on shell
+    }
+    
+    @Override
+    public boolean isPushable() {
+        // Turtle is too massive to be pushed by other entities
+        return false;
+    }
+    
+    /**
+     * Prevent mobs from spawning inside turtle
+     */
+    public boolean canMobSpawnInside() {
+        return false;
     }
     
     @Override

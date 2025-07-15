@@ -38,7 +38,7 @@ public class AethelonConfig {
     public int idle_time_max_ticks = 72000; // 60 minutes
     public double movement_speed = 0.05;
     public int damage_immunity_ticks = 100; // 5 seconds
-    public double health = 2000.0;
+    public double health = 2000.0; // Increased from 1000 to 2000
     public double follow_range = 128.0;
     public double knockback_resistance = 1.0;
     
