@@ -66,7 +66,7 @@ public abstract class AethelonEntityCollisionMixin {
     /**
      * Handle collision logic for Aethelon entities
      */
-    @Inject(method = "collidesWith", cancellable = true, at = @At("RETURN"))
+    @Inject(method = "collidesWith", at = @At("HEAD"), cancellable = true)
     private void aethelon$handleAethelonCollision(Entity other, CallbackInfoReturnable<Boolean> cir) {
         Entity thisEntity = (Entity)(Object)this;
         
@@ -74,22 +74,24 @@ public abstract class AethelonEntityCollisionMixin {
         if (thisEntity instanceof AethelonEntity aethelonEntity) {
             // Aethelon should collide with all living entities (to act as a platform)
             if (other.isLiving() && other.isAlive()) {
-                // Check if the other entity is above the turtle (standing on it)
-                boolean isAbove = other.getY() >= thisEntity.getY() + thisEntity.getHeight() - 0.5;
-                cir.setReturnValue(isAbove);
+                // Force collision for the entire turtle hitbox area
+                cir.setReturnValue(true);
+                return;
             } else {
                 // Don't collide with non-living entities (items, projectiles, etc.)
                 cir.setReturnValue(false);
+                return;
             }
         }
         // If other entity is Aethelon, this entity should collide with it
         else if (other instanceof AethelonEntity) {
             if (thisEntity.isLiving() && thisEntity.isAlive()) {
-                // Check if this entity is above the turtle
-                boolean isAbove = thisEntity.getY() >= other.getY() + other.getHeight() - 0.5;
-                cir.setReturnValue(isAbove);
+                // Force collision for the entire turtle hitbox area
+                cir.setReturnValue(true);
+                return;
             } else {
                 cir.setReturnValue(false);
+                return;
             }
         }
     }
@@ -121,17 +123,15 @@ public abstract class AethelonEntityCollisionMixin {
                     continue;
                 }
 
-                // Check if entity is standing on the turtle
-                boolean isStandingOn = entity.getY() >= thisEntity.getY() + thisEntity.getHeight() - 0.1 &&
-                                     entity.getY() <= thisEntity.getY() + thisEntity.getHeight() + 2.0;
+                // Check if entity is standing on the turtle (more lenient bounds)
+                double turtleTopY = thisEntity.getY() + thisEntity.getHeight();
+                boolean isStandingOn = entity.getY() >= turtleTopY - 1.0 && // Allow entities slightly below surface
+                                     entity.getY() <= turtleTopY + 3.0;     // And a bit above
 
                 if (isStandingOn) {
-                    // Keep entity on turtle surface
-                    double turtleTopY = thisEntity.getY() + thisEntity.getHeight();
-                    
-                    // If entity is falling through, place it on surface
-                    if (entity.getY() < turtleTopY && entity.getVelocity().y <= 0) {
-                        entity.setPosition(entity.getX(), turtleTopY, entity.getZ());
+                    // If entity is falling through or sinking, place it on surface
+                    if (entity.getY() < turtleTopY + 0.1 && entity.getVelocity().y <= 0) {
+                        entity.setPosition(entity.getX(), turtleTopY + 0.1, entity.getZ());
                         entity.setVelocity(entity.getVelocity().x, 0, entity.getVelocity().z);
                         entity.fallDistance = 0.0f;
                     }

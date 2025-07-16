@@ -27,28 +27,29 @@ public class AethelonEntityModel extends EntityModel<LivingEntityRenderState> {
         ModelData modelData = new ModelData();
         ModelPartData modelPartData = modelData.getRoot();
 
+        // Back to massive model approach - this works better for textures
         // Shell - main body (large and flat for island carrying)
         modelPartData.addChild("shell", 
             ModelPartBuilder.create()
                 .uv(0, 0).cuboid(-16.0F, -8.0F, -14.0F, 32.0F, 8.0F, 28.0F, new Dilation(0.0F)), 
             ModelTransform.pivot(0.0F, 16.0F, 0.0F));
 
-        // Head - smaller turtle head
+        // Head - larger turtle head
         modelPartData.addChild("head", 
             ModelPartBuilder.create()
                 .uv(0, 36).cuboid(-4.0F, -4.0F, -8.0F, 8.0F, 6.0F, 8.0F, new Dilation(0.0F)), 
             ModelTransform.pivot(0.0F, 18.0F, -14.0F));
 
-        // Legs - four simple legs
+        // Legs - larger legs
         modelPartData.addChild("legs", 
             ModelPartBuilder.create()
                 .uv(32, 36).cuboid(-12.0F, 0.0F, -10.0F, 6.0F, 8.0F, 6.0F, new Dilation(0.0F)) // Front left
-                .uv(32, 36).cuboid(6.0F, 0.0F, -10.0F, 6.0F, 8.0F, 6.0F, new Dilation(0.0F))  // Front right
-                .uv(32, 36).cuboid(-12.0F, 0.0F, 4.0F, 6.0F, 8.0F, 6.0F, new Dilation(0.0F))   // Back left
-                .uv(32, 36).cuboid(6.0F, 0.0F, 4.0F, 6.0F, 8.0F, 6.0F, new Dilation(0.0F)),    // Back right
+                .uv(56, 36).cuboid(6.0F, 0.0F, -10.0F, 6.0F, 8.0F, 6.0F, new Dilation(0.0F))  // Front right
+                .uv(32, 50).cuboid(-12.0F, 0.0F, 4.0F, 6.0F, 8.0F, 6.0F, new Dilation(0.0F))   // Back left
+                .uv(56, 50).cuboid(6.0F, 0.0F, 4.0F, 6.0F, 8.0F, 6.0F, new Dilation(0.0F)),    // Back right
             ModelTransform.pivot(0.0F, 16.0F, 0.0F));
 
-        return TexturedModelData.of(modelData, 128, 64);
+        return TexturedModelData.of(modelData, 256, 128); // Match your existing texture files
     }
 
     @Override

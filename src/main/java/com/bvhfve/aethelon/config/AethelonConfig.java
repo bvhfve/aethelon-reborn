@@ -36,11 +36,25 @@ public class AethelonConfig {
     // Entity Behavior Configuration
     public int idle_time_min_ticks = 24000; // 20 minutes
     public int idle_time_max_ticks = 72000; // 60 minutes
-    public double movement_speed = 0.05;
     public int damage_immunity_ticks = 100; // 5 seconds
     public double health = 2000.0; // Increased from 1000 to 2000
+    public double movement_speed = 0.75; // 3x increased base movement speed
     public double follow_range = 128.0;
     public double knockback_resistance = 1.0;
+    
+    // Phase 2: AI Behavior Configuration
+    public double min_idle_time = 20.0; // Minutes
+    public double max_idle_time = 60.0; // Minutes
+    public double movement_speed_multiplier = 1.0;
+    public boolean enable_damage_response = true;
+    public double pathfinding_range = 500.0; // Blocks
+    
+    // Phase 2: Movement Speed Configuration
+    public double normal_movement_speed = 0.45; // Normal movement speed
+    public double escape_movement_speed = 0.75; // Speed when escaping from damage
+    public double navigation_speed = 0.75; // Speed for pathfinding navigation
+    public double acceleration_factor = 0.3; // How quickly turtle accelerates (0.1-1.0)
+    public double turning_speed = 0.15; // How quickly turtle turns (0.01-1.0)
     
     // Island Configuration
     public int max_island_size = 64; // 64x64 blocks max
@@ -153,6 +167,13 @@ public class AethelonConfig {
         health = Math.max(100.0, Math.min(10000.0, health));
         movement_speed = Math.max(0.01, Math.min(1.0, movement_speed));
         max_world_population = Math.max(1, Math.min(50, max_world_population));
+        
+        // Clamp movement speed values
+        normal_movement_speed = Math.max(0.01, Math.min(2.0, normal_movement_speed));
+        escape_movement_speed = Math.max(0.01, Math.min(3.0, escape_movement_speed));
+        navigation_speed = Math.max(0.01, Math.min(3.0, navigation_speed));
+        acceleration_factor = Math.max(0.01, Math.min(1.0, acceleration_factor));
+        turning_speed = Math.max(0.01, Math.min(1.0, turning_speed));
     }
     
     /**

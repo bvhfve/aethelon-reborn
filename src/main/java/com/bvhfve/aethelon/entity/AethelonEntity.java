@@ -2,6 +2,10 @@ package com.bvhfve.aethelon.entity;
 
 import com.bvhfve.aethelon.config.AethelonConfig;
 import com.bvhfve.aethelon.util.PerformanceManager;
+import com.bvhfve.aethelon.ai.AethelonStateMachine;
+import com.bvhfve.aethelon.ai.goals.AethelonIdleGoal;
+import com.bvhfve.aethelon.ai.goals.AethelonPathfindGoal;
+import com.bvhfve.aethelon.ai.goals.AethelonTransitionGoal;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -28,6 +32,8 @@ import net.minecraft.world.WorldAccess;
  * 
  * This entity represents the core of the mod: a massive, passive turtle that
  * moves slowly through ocean biomes while carrying a functional island structure.
+ * 
+ * Uses dynamic scaling: Normal-sized model scaled up 2.5x for proper texture mapping
  */
 public class AethelonEntity extends WaterCreatureEntity {
     
@@ -49,26 +55,32 @@ public class AethelonEntity extends WaterCreatureEntity {
     private int nearPlayerCheckTimer = 0;
     private static final int NEAR_PLAYER_CHECK_INTERVAL = 40; // Check every 2 seconds
     
-    // Cached values for performance
-    private Vec3d cachedShellCenter = null;
-    private int shellCenterCacheTimer = 0;
-    private static final int SHELL_CENTER_CACHE_INTERVAL = 20; // Cache for 1 second
+    // Scale calculation: Current turtle is 32x8x28 blocks, normal turtle would be ~12x4x10
+    // Scale needed: 32/12 = 2.67 for width, 8/4 = 2.0 for height, 28/10 = 2.8 for length
+    // Average scale: ~2.5x to maintain current size
+    public static final float WORLD_TURTLE_SCALE = 2.5f;
+    
+    // Phase 2: AI and State Management
+    private AethelonStateMachine stateMachine;
     
     public AethelonEntity(EntityType<? extends WaterCreatureEntity> entityType, World world) {
         super(entityType, world);
+        
+        // Initialize Phase 2 systems
+        this.stateMachine = new AethelonStateMachine(this);
     }
     
     /**
      * Creates the default attributes for Aethelon entities
-     * PERFORMANCE CRITICAL: Reduced values for better performance
+     * Uses dynamic scaling for proper texture mapping
      */
     public static DefaultAttributeContainer.Builder createAethelonAttributes() {
         return WaterCreatureEntity.createMobAttributes()
                 .add(EntityAttributes.MAX_HEALTH, AethelonConfig.INSTANCE != null ? AethelonConfig.INSTANCE.health : 2000.0) // Increased from 1000 to 2000
-                .add(EntityAttributes.MOVEMENT_SPEED, AethelonConfig.INSTANCE != null ? AethelonConfig.INSTANCE.movement_speed : 0.02) // Reduced from 0.05
+                .add(EntityAttributes.MOVEMENT_SPEED, AethelonConfig.INSTANCE != null ? AethelonConfig.INSTANCE.movement_speed : 0.75) // 3x increased for very visible movement
                 .add(EntityAttributes.FOLLOW_RANGE, 32.0) // Drastically reduced from 128.0
-                .add(EntityAttributes.KNOCKBACK_RESISTANCE, AethelonConfig.INSTANCE != null ? AethelonConfig.INSTANCE.knockback_resistance : 1.0)
-                .add(EntityAttributes.SCALE, Math.min(AethelonConfig.getTurtleSizeScale(), 2.0f)); // Capped at 2x for performance
+                .add(EntityAttributes.KNOCKBACK_RESISTANCE, AethelonConfig.INSTANCE != null ? AethelonConfig.INSTANCE.knockback_resistance : 1.0);
+                // Scale applied via getBaseDimensions() override instead of attributes
     }
     
     public boolean canTakeDamage() {
@@ -78,14 +90,35 @@ public class AethelonEntity extends WaterCreatureEntity {
     
     @Override
     public boolean damage(net.minecraft.server.world.ServerWorld world, net.minecraft.entity.damage.DamageSource source, float amount) {
+        // Debug: Print damage source information
+        System.out.println("Aethelon taking damage from: " + source.getName() + " (amount: " + amount + ")");
+        if (source.getAttacker() != null) {
+            System.out.println("Attacker: " + source.getAttacker().getClass().getSimpleName());
+        }
+        
         // Prevent suffocation damage - world turtles are too large to suffocate
         if (source.isOf(net.minecraft.entity.damage.DamageTypes.IN_WALL) || 
             source.isOf(net.minecraft.entity.damage.DamageTypes.CRAMMING)) {
-            return false; // Ignore wall/cramming damage
+            System.out.println("Ignoring environmental damage: " + source.getName());
+            return false; // Ignore environmental damage
+        }
+        
+        // Prevent drowning damage - world turtles are aquatic
+        if (source.isOf(net.minecraft.entity.damage.DamageTypes.DROWN)) {
+            System.out.println("Ignoring drowning damage");
+            return false;
+        }
+        
+        // Phase 2: Only trigger damage response for player attacks
+        if (stateMachine != null && source.getAttacker() instanceof PlayerEntity) {
+            System.out.println("Triggering damage response for player attack");
+            stateMachine.triggerDamageResponse();
         }
         
         // Allow other types of damage
-        return super.damage(world, source, amount);
+        boolean damaged = super.damage(world, source, amount);
+        System.out.println("Damage result: " + damaged);
+        return damaged;
     }
     
     protected boolean isInWall() {
@@ -103,9 +136,6 @@ public class AethelonEntity extends WaterCreatureEntity {
         // World turtles should never despawn - they're too important
         return true;
     }
-    
-    // Note: canBreatheInWater() is final in parent class, can't override
-    // Turtle inherits water breathing from WaterCreatureEntity
     
     public boolean canWalkOnPowderedSnow() {
         // Large turtles don't sink into powder snow
@@ -142,10 +172,11 @@ public class AethelonEntity extends WaterCreatureEntity {
     @Override
     protected void initGoals() {
         super.initGoals();
-        // TODO: Phase 2 - Add custom AI goals
-        // this.goalSelector.add(1, new AethelonIdleGoal(this));
-        // this.goalSelector.add(2, new AethelonPathfindGoal(this));
-        // this.goalSelector.add(3, new AethelonTransitionGoal(this));
+        
+        // Phase 2: Add custom AI goals with priority order
+        this.goalSelector.add(1, new AethelonTransitionGoal(this)); // Highest priority - state transitions
+        this.goalSelector.add(2, new AethelonPathfindGoal(this));   // Movement and pathfinding
+        this.goalSelector.add(3, new AethelonIdleGoal(this));       // Idle behavior (lowest priority)
     }
     
     @Override
@@ -191,21 +222,14 @@ public class AethelonEntity extends WaterCreatureEntity {
         // Only process state management based on performance level
         if (perfLevel == PerformanceManager.PerformanceLevel.HIGH || 
             tickCounter % tickDivider == 0) {
+            // Phase 2: State machine logic
+            if (stateMachine != null) {
+                stateMachine.tick();
+            }
+            
             // Basic state management
             stateTimer++;
             
-            // Update cached shell center timer
-            shellCenterCacheTimer++;
-            
-            // Update entities on shell (performance critical)
-            if (perfLevel == PerformanceManager.PerformanceLevel.HIGH) {
-                updateEntitiesOnShell();
-            } else if (tickCounter % (tickDivider * 4) == 0) {
-                // Less frequent updates for distant entities
-                updateEntitiesOnShell();
-            }
-            
-            // TODO: Phase 2 - Implement state machine logic
             // TODO: Phase 4 - Update island position
             // TODO: Phase 5 - Handle island movement
         }
@@ -317,26 +341,17 @@ public class AethelonEntity extends WaterCreatureEntity {
     // Foundation for Phase 4: Island Structure System
     // Allows blocks and entities to stand on turtle's back surface
     
-    // Island bounds - defines the area where blocks can be placed
-    private static final int ISLAND_WIDTH = 24;  // 24 blocks wide
-    private static final int ISLAND_LENGTH = 28; // 28 blocks long
-    private static final double SHELL_HEIGHT_OFFSET = 5.0; // On top of 5-block hitbox
+    // Island bounds - defines the area where blocks can be placed (scaled with turtle)
+    private static final int ISLAND_WIDTH = (int)(24 * WORLD_TURTLE_SCALE);  // Scaled with turtle
+    private static final int ISLAND_LENGTH = (int)(28 * WORLD_TURTLE_SCALE); // Scaled with turtle
+    private static final double SHELL_HEIGHT_OFFSET = 5.0 * WORLD_TURTLE_SCALE; // Scaled shell height
     
     /**
      * Get the world position of the turtle's shell surface center
      * This is where the island will be anchored
-     * PERFORMANCE: Cached to avoid repeated calculations
      */
     public Vec3d getShellCenterPos() {
-        // Use cached value if available and recent
-        if (cachedShellCenter != null && shellCenterCacheTimer < SHELL_CENTER_CACHE_INTERVAL) {
-            return cachedShellCenter;
-        }
-        
-        // Calculate and cache new position
-        cachedShellCenter = new Vec3d(this.getX(), this.getY() + SHELL_HEIGHT_OFFSET, this.getZ());
-        shellCenterCacheTimer = 0;
-        return cachedShellCenter;
+        return new Vec3d(this.getX(), this.getY() + SHELL_HEIGHT_OFFSET, this.getZ());
     }
     
     /**
@@ -362,7 +377,7 @@ public class AethelonEntity extends WaterCreatureEntity {
         double z2 = center.z + (halfWidth * sin + halfLength * cos);
         
         Vec3d min = new Vec3d(Math.min(x1, x2), center.y, Math.min(z1, z2));
-        Vec3d max = new Vec3d(Math.max(x1, x2), center.y + 32, Math.max(z1, z2)); // 32 blocks high for island
+        Vec3d max = new Vec3d(Math.max(x1, x2), center.y + 32 * WORLD_TURTLE_SCALE, Math.max(z1, z2)); // Scaled island height
         
         return new IslandBounds(min, max);
     }
@@ -382,6 +397,11 @@ public class AethelonEntity extends WaterCreatureEntity {
      */
     public boolean isBlockOnShell(BlockPos blockPos) {
         return isPositionOnShell(Vec3d.ofCenter(blockPos));
+    }
+    
+    // Phase 2: Getter methods for AI system
+    public AethelonStateMachine getStateMachine() {
+        return stateMachine;
     }
     
     /**
@@ -453,7 +473,7 @@ public class AethelonEntity extends WaterCreatureEntity {
         double entityBottomY = entityPos.y;
         
         // Entity is standing on shell if it's within 2 blocks of surface
-        return Math.abs(entityBottomY - shellSurfaceY) <= 2.0;
+        return Math.abs(entityBottomY - shellSurfaceY) <= 2.0 * WORLD_TURTLE_SCALE;
     }
     
     /**
@@ -486,5 +506,4 @@ public class AethelonEntity extends WaterCreatureEntity {
             }
         }
     }
-    
 }
