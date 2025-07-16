@@ -41,10 +41,18 @@ public class ModEntityTypes {
     public static EntityType<AethelonEntity> AETHELON;
     
     /**
+     * Initializes and registers all entity types and their attributes
+     * Called during mod initialization - must be called before items registration
+     */
+    public static void initialize() {
+        registerEntityTypes();
+    }
+    
+    /**
      * Registers all entity types and their attributes
      * Called during mod initialization - must be called before items registration
      */
-    public static void registerEntityTypes() {
+    private static void registerEntityTypes() {
         Aethelon.LOGGER.info("Registering Aethelon entity types...");
         
         try {

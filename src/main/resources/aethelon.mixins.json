@@ -5,7 +5,10 @@
   "compatibilityLevel": "JAVA_21",
   "refmap": "aethelon.refmap.json",
   "mixins": [
-    "AethelonEntityCollisionMixin"
+    "AethelonEntityCollisionMixin",
+    "EntityMixin",
+    "FishingBobberEntityMixin",
+    "LivingEntityMixin"
   ],
   "client": [
   ],

@@ -1,23 +1,20 @@
 package com.bvhfve.aethelon;
 
+import com.bvhfve.aethelon.compat.ModCompatibility;
 import com.bvhfve.aethelon.config.AethelonConfig;
 import com.bvhfve.aethelon.registry.ModBiomeModifications;
 import com.bvhfve.aethelon.registry.ModEntityTypes;
+import com.bvhfve.aethelon.registry.ModItemGroups;
 import com.bvhfve.aethelon.registry.ModItems;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Main mod class for Aethelon - The World Turtle mod
+ * Main mod class for Aethelon - Giant Sea Turtles with Islands
  * 
- * This mod introduces colossal turtle entities that carry functional islands
- * on their backs, creating a unique and dynamic world experience.
- * 
- * Based on best practices from knowledge pool examples:
- * - Proper initialization order with validation
- * - Comprehensive error handling
- * - Phase-based development approach
+ * This mod adds massive sea turtles that carry islands on their backs,
+ * creating mobile ocean bases and unique exploration opportunities.
  */
 public class Aethelon implements ModInitializer {
     public static final String MOD_ID = "aethelon";
@@ -25,50 +22,26 @@ public class Aethelon implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info("Initializing Aethelon - The World Turtle mod v{}", getModVersion());
-        
+        LOGGER.info("Initializing Aethelon - Giant Sea Turtles mod...");
+
         try {
-            // Step 0: Initialize configuration system first
-            LOGGER.info("Initializing configuration system...");
+            // Initialize configuration
             AethelonConfig.initialize();
             
-            // Phase 1: Basic Entity Foundation
-            // Order is critical: config -> entities -> items -> biome modifications
+            // Register mod content
+            ModItems.initialize();
+            ModEntityTypes.initialize();
+            ModItemGroups.initialize();
+            ModBiomeModifications.initialize();
             
-            LOGGER.info("Phase 1: Registering core components...");
+            // Initialize mod compatibility system
+            ModCompatibility.initialize();
             
-            // Step 1: Register entity types first (required for items)
-            ModEntityTypes.registerEntityTypes();
-            ModEntityTypes.validateRegistration();
-            
-            // Step 2: Register items (depends on entity types)
-            ModItems.registerItems();
-            ModItems.validateRegistration();
-            
-            // Step 3: Register biome modifications (depends on entity types)
-            ModBiomeModifications.registerSpawnConditions();
-            
-            LOGGER.info("Phase 1 initialization complete - {} entities, {} items registered", 
-                       1, 1);
-            
-            // TODO: Phase 2 - Entity Behavior & Movement (AI, pathfinding, swimming)
-            // TODO: Phase 3 - Damage Response & Player Interaction
-            // TODO: Phase 4 - Island Structure System
-            
-            LOGGER.info("Aethelon mod initialization successful!");
+            LOGGER.info("Aethelon mod initialized successfully!");
             
         } catch (Exception e) {
-            LOGGER.error("Failed to initialize Aethelon mod", e);
-            throw new RuntimeException("Mod initialization failed", e);
+            LOGGER.error("Failed to initialize Aethelon mod: {}", e.getMessage(), e);
+            throw new RuntimeException("Aethelon mod initialization failed", e);
         }
-    }
-    
-    /**
-     * Gets the mod version for logging purposes
-     * @return mod version string
-     */
-    private String getModVersion() {
-        // In a real implementation, this would read from fabric.mod.json
-        return "1.0.0-SNAPSHOT";
     }
 }

@@ -56,6 +56,36 @@ public class AethelonConfig {
     public double acceleration_factor = 0.3; // How quickly turtle accelerates (0.1-1.0)
     public double turning_speed = 0.15; // How quickly turtle turns (0.01-1.0)
     
+    // Phase 4: Island Configuration
+    public boolean enable_islands = true; // Enable island system
+    public boolean auto_create_islands = true; // Automatically create islands on spawn
+    public double small_island_chance = 0.5; // 50% chance for small islands
+    public double medium_island_chance = 0.35; // 35% chance for medium islands
+    public double large_island_chance = 0.15; // 15% chance for large islands
+    public boolean preserve_island_entities = true; // Keep entities on islands during movement
+    public boolean enable_custom_islands = true; // Allow loading custom island structures
+    
+    // Phase 3: Enhanced Damage & Death Configuration
+    public boolean enable_enhanced_damage = true; // Enable enhanced damage system
+    public boolean enable_death_explosion = true; // Enable dramatic death explosion
+    public int explosion_tnt_count = 15; // Number of TNT entities spawned on death
+    public float explosion_radius = 25.0f; // Explosion radius in blocks
+    public boolean broadcast_death_messages = true; // Broadcast death messages to all players
+    public boolean remove_island_on_death = true; // Remove island before explosion
+    public int agitation_decay_rate = 1; // How fast agitation decreases (per 3 seconds)
+    public int enrage_threshold = 75; // Agitation level needed to trigger enrage state
+    
+    // Loot System Configuration
+    public boolean enable_loot_drops = true; // Enable loot drops from defeated turtles
+    public boolean show_loot_notifications = true; // Show loot messages to players
+    public int base_experience_reward = 500; // Base experience points for defeating turtle
+    public float loot_quantity_multiplier = 1.0f; // Global loot quantity multiplier
+    public float loot_rarity_bonus = 0.0f; // Global bonus to rare item chances
+    public boolean enable_custom_turtle_items = true; // Enable custom turtle-themed items
+    public boolean enable_island_loot = true; // Drop loot from destroyed islands
+    public boolean enable_enrage_bonus_loot = true; // Extra loot for enraged turtles
+    public int max_loot_spread_radius = 10; // Maximum radius for loot spread (blocks)
+    
     // Island Configuration
     public int max_island_size = 64; // 64x64 blocks max
     public int island_y_offset = 2; // Blocks above turtle
@@ -174,6 +204,36 @@ public class AethelonConfig {
         navigation_speed = Math.max(0.01, Math.min(3.0, navigation_speed));
         acceleration_factor = Math.max(0.01, Math.min(1.0, acceleration_factor));
         turning_speed = Math.max(0.01, Math.min(1.0, turning_speed));
+        
+        // Validate and normalize island configuration
+        small_island_chance = Math.max(0.0, Math.min(1.0, small_island_chance));
+        medium_island_chance = Math.max(0.0, Math.min(1.0, medium_island_chance));
+        large_island_chance = Math.max(0.0, Math.min(1.0, large_island_chance));
+        
+        // Normalize island chances to sum to 1.0
+        double totalChance = small_island_chance + medium_island_chance + large_island_chance;
+        if (totalChance > 0) {
+            small_island_chance /= totalChance;
+            medium_island_chance /= totalChance;
+            large_island_chance /= totalChance;
+        } else {
+            // Default values if all are 0
+            small_island_chance = 0.5;
+            medium_island_chance = 0.35;
+            large_island_chance = 0.15;
+        }
+        
+        // Validate Phase 3 configuration
+        explosion_tnt_count = Math.max(5, Math.min(50, explosion_tnt_count));
+        explosion_radius = Math.max(10.0f, Math.min(100.0f, explosion_radius));
+        agitation_decay_rate = Math.max(1, Math.min(10, agitation_decay_rate));
+        enrage_threshold = Math.max(50, Math.min(100, enrage_threshold));
+        
+        // Validate loot system configuration
+        base_experience_reward = Math.max(50, Math.min(5000, base_experience_reward));
+        loot_quantity_multiplier = Math.max(0.1f, Math.min(5.0f, loot_quantity_multiplier));
+        loot_rarity_bonus = Math.max(0.0f, Math.min(1.0f, loot_rarity_bonus));
+        max_loot_spread_radius = Math.max(5, Math.min(50, max_loot_spread_radius));
     }
     
     /**

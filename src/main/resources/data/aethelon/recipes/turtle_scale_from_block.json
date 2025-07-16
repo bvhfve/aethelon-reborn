@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "aethelon:turtle_scale_block"
+    }
+  ],
+  "result": {
+    "item": "aethelon:ancient_turtle_scale",
+    "count": 9
+  }
+}

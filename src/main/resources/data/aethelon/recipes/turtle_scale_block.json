@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "SSS",
+    "SSS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "aethelon:ancient_turtle_scale"
+    }
+  },
+  "result": {
+    "item": "aethelon:turtle_scale_block",
+    "count": 1
+  }
+}

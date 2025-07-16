@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:brewing",
+  "ingredient": {
+    "item": "aethelon:crystallized_water"
+  },
+  "base": {
+    "item": "minecraft:potion",
+    "nbt": "{Potion:\"minecraft:water_breathing\"}"
+  },
+  "result": {
+    "item": "minecraft:potion",
+    "nbt": "{Potion:\"minecraft:long_water_breathing\"}"
+  }
+}

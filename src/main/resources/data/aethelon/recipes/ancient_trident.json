@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " H ",
+    " S ",
+    " T "
+  ],
+  "key": {
+    "H": {
+      "item": "aethelon:turtle_heart"
+    },
+    "S": {
+      "item": "aethelon:ancient_turtle_scale"
+    },
+    "T": {
+      "item": "minecraft:trident"
+    }
+  },
+  "result": {
+    "item": "aethelon:ancient_trident",
+    "count": 1
+  }
+}
