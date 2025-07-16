@@ -49,6 +49,11 @@ public class AethelonEntity extends WaterCreatureEntity {
     private int nearPlayerCheckTimer = 0;
     private static final int NEAR_PLAYER_CHECK_INTERVAL = 40; // Check every 2 seconds
     
+    // Cached values for performance
+    private Vec3d cachedShellCenter = null;
+    private int shellCenterCacheTimer = 0;
+    private static final int SHELL_CENTER_CACHE_INTERVAL = 20; // Cache for 1 second
+    
     public AethelonEntity(EntityType<? extends WaterCreatureEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -189,6 +194,17 @@ public class AethelonEntity extends WaterCreatureEntity {
             // Basic state management
             stateTimer++;
             
+            // Update cached shell center timer
+            shellCenterCacheTimer++;
+            
+            // Update entities on shell (performance critical)
+            if (perfLevel == PerformanceManager.PerformanceLevel.HIGH) {
+                updateEntitiesOnShell();
+            } else if (tickCounter % (tickDivider * 4) == 0) {
+                // Less frequent updates for distant entities
+                updateEntitiesOnShell();
+            }
+            
             // TODO: Phase 2 - Implement state machine logic
             // TODO: Phase 4 - Update island position
             // TODO: Phase 5 - Handle island movement
@@ -309,9 +325,18 @@ public class AethelonEntity extends WaterCreatureEntity {
     /**
      * Get the world position of the turtle's shell surface center
      * This is where the island will be anchored
+     * PERFORMANCE: Cached to avoid repeated calculations
      */
     public Vec3d getShellCenterPos() {
-        return new Vec3d(this.getX(), this.getY() + SHELL_HEIGHT_OFFSET, this.getZ());
+        // Use cached value if available and recent
+        if (cachedShellCenter != null && shellCenterCacheTimer < SHELL_CENTER_CACHE_INTERVAL) {
+            return cachedShellCenter;
+        }
+        
+        // Calculate and cache new position
+        cachedShellCenter = new Vec3d(this.getX(), this.getY() + SHELL_HEIGHT_OFFSET, this.getZ());
+        shellCenterCacheTimer = 0;
+        return cachedShellCenter;
     }
     
     /**

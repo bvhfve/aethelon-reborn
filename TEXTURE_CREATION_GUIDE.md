@@ -2,20 +2,25 @@
 
 ## 📐 **Technical Specifications**
 
+### **Entity Dimensions**
+- **In-Game Size**: 32 blocks wide × 5 blocks high (massive world turtle)
+- **Model Scale**: Designed for large-scale visibility and island carrying
+- **Hitbox**: 32×5 block collision box for realistic interaction
+
 ### **Texture Dimensions**
-- **Canvas Size**: 256x128 pixels (as defined in the model)
+- **Canvas Size**: 256x128 pixels (optimized for large entity)
 - **File Format**: PNG with transparency support
 - **File Location**: `src/main/resources/assets/aethelon/textures/entity/aethelon.png`
-- **Metadata File**: Already exists at `aethelon.png.mcmeta`
+- **Texture Resolution**: High-resolution for close-up viewing when players are on the turtle
 
 ### **UV Mapping Layout**
-Based on the model code, here's how the texture is mapped:
+Based on the optimized model code for 32×5 block turtle:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐ 256px
 │ BODY (0,0)           │ SHELL (80,0)                          │
-│ 80x48 pixels         │ 176x52 pixels                         │
-│                      │                                       │
+│ 80x36 pixels         │ 176x42 pixels                         │
+│ Main turtle body     │ Large shell for island carrying       │
 ├─────────────────────┼───────────────────────────────────────┤
 │ HEAD (0,48)         │ SHELL CONTINUED                       │
 │ 48x20 pixels        │                                       │
