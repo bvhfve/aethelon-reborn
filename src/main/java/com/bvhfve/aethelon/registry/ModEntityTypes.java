@@ -2,6 +2,7 @@ package com.bvhfve.aethelon.registry;
 
 import com.bvhfve.aethelon.Aethelon;
 import com.bvhfve.aethelon.entity.AethelonEntity;
+import com.bvhfve.aethelon.entity.AethelonSpawnChecker;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;

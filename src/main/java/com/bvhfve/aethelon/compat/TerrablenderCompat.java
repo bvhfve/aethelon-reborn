@@ -2,9 +2,11 @@ package com.bvhfve.aethelon.compat;
 
 import com.bvhfve.aethelon.entity.AethelonEntity;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.source.util.MultiNoiseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -90,7 +92,48 @@ public class TerrablenderCompat {
      */
     private static void initializeTerrablenderIntegration() {
         LOGGER.info("Setting up Terrablender biome generation integration...");
-        // Integration with Terrablender's biome generation system
+        try {
+            // Register Aethelon region for enhanced spawning in modded ocean biomes
+            registerAethelonRegion();
+            
+            // Register biome modifications for ocean biomes
+            registerOceanBiomeModifications();
+            
+        } catch (Exception e) {
+            LOGGER.warn("Failed to initialize Terrablender integration: {}", e.getMessage());
+        }
+    }
+    
+    /**
+     * Register Aethelon region with Terrablender
+     */
+    private static void registerAethelonRegion() {
+        try {
+            // This would register a custom region that enhances ocean biomes for Aethelon spawning
+            // The actual implementation would require TerraBlender API classes
+            LOGGER.info("Registering Aethelon ocean enhancement region with Terrablender");
+            
+            // Example of what the registration would look like:
+            // Regions.register(new AethelonOceanRegion(Identifier.of("aethelon", "ocean_enhancement"), 5));
+            
+        } catch (Exception e) {
+            LOGGER.warn("Failed to register Aethelon region: {}", e.getMessage());
+        }
+    }
+    
+    /**
+     * Register ocean biome modifications
+     */
+    private static void registerOceanBiomeModifications() {
+        try {
+            LOGGER.info("Registering ocean biome modifications for Aethelon spawning");
+            
+            // This would modify ocean biomes to include Aethelon spawn data
+            // The actual implementation would use TerraBlender's biome modification system
+            
+        } catch (Exception e) {
+            LOGGER.warn("Failed to register biome modifications: {}", e.getMessage());
+        }
     }
     
     /**

@@ -5,7 +5,9 @@ import com.bvhfve.aethelon.config.AethelonConfig;
 import com.bvhfve.aethelon.registry.ModBiomeModifications;
 import com.bvhfve.aethelon.registry.ModEntityTypes;
 import com.bvhfve.aethelon.registry.ModItemGroups;
-import com.bvhfve.aethelon.registry.ModItems;
+import com.bvhfve.aethelon.items.ModItems;
+import com.bvhfve.aethelon.structure.StructureRegistry;
+import com.bvhfve.aethelon.structure.DatapackStructureManager;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,10 +31,14 @@ public class Aethelon implements ModInitializer {
             AethelonConfig.initialize();
             
             // Register mod content
-            ModItems.initialize();
+            ModItems.registerModItems();
             ModEntityTypes.initialize();
-            ModItemGroups.initialize();
-            ModBiomeModifications.initialize();
+            ModItemGroups.registerItemGroups();
+            ModBiomeModifications.registerSpawnConditions();
+            
+            // Initialize structure system
+            StructureRegistry.initialize();
+            DatapackStructureManager.initialize();
             
             // Initialize mod compatibility system
             ModCompatibility.initialize();

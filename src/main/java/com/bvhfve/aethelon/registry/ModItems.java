@@ -1,6 +1,7 @@
 package com.bvhfve.aethelon.registry;
 
 import com.bvhfve.aethelon.Aethelon;
+
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.MobEntity;
@@ -85,7 +86,6 @@ public class ModItems {
         Aethelon.LOGGER.debug("Registering spawn eggs");
         
         // Cast to ensure proper type for SpawnEggItem
-        @SuppressWarnings("unchecked")
         EntityType<? extends MobEntity> entityType = (EntityType<? extends MobEntity>) ModEntityTypes.AETHELON;
         
         // Register spawn egg with default colors (custom colors not supported in 1.21.4)

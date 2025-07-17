@@ -1,0 +1,14 @@
+# This is a placeholder for the medium_island.nbt file
+# In a real implementation, this would be a binary NBT file created using structure blocks
+# or exported from a world using tools like WorldEdit or Litematica
+
+# To create actual NBT structure files:
+# 1. Build your structure in a Minecraft world
+# 2. Use structure blocks to save the structure
+# 3. Copy the .nbt file from your world's generated/structures folder
+# 4. Place it in this directory
+
+# Example structure dimensions for medium_island:
+# - Size: 24x12x24 blocks
+# - Contains: grass platform, trees, small pond, decorative elements
+# - Biome compatibility: ocean, deep_ocean, warm_ocean, lukewarm_ocean, cold_ocean

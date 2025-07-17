@@ -33,6 +33,13 @@ public class AethelonConfig {
     public int spawn_height_min = 45;
     public int spawn_height_max = 62;
     
+    // New spawning configuration
+    public int oceanSpawnWeight = 5; // Configurable ocean spawn weight
+    public int minimumTurtleDistance = 128; // Minimum distance between turtles in blocks
+    public static final int BEACH_SPAWN_WEIGHT = 15; // Hardcoded beach spawn weight
+    public static final int SNOWY_BEACH_SPAWN_WEIGHT = 10; // Hardcoded snowy beach spawn weight  
+    public static final int STONY_SHORE_SPAWN_WEIGHT = 12; // Hardcoded stony shore spawn weight
+    
     // Entity Behavior Configuration
     public int idle_time_min_ticks = 24000; // 20 minutes
     public int idle_time_max_ticks = 72000; // 60 minutes
@@ -100,6 +107,8 @@ public class AethelonConfig {
     
     // Debug Configuration
     public boolean enable_debug_logging = false;
+    public boolean debug_chunk_generation = false; // Log config status during chunk generation
+    public boolean debug_spawn_attempts = false;   // Log detailed spawn attempt information
     public boolean show_state_particles = false;
     public boolean enable_spawn_commands = true;
     
@@ -151,6 +160,11 @@ public class AethelonConfig {
         LOGGER.info("Aethelon config initialized - Water depth: {}, Clearance: {}, Size: {}, Rarity: {}", 
                    INSTANCE.water_depth_required, INSTANCE.clearance_above_required, 
                    INSTANCE.turtle_size_scale, INSTANCE.spawn_rarity);
+        
+        // Log all config options if debug logging is enabled
+        if (INSTANCE.enable_debug_logging) {
+            INSTANCE.logAllConfigOptions();
+        }
     }
     
     /**
@@ -262,5 +276,170 @@ public class AethelonConfig {
      */
     public static float getSpawnRarity() {
         return INSTANCE != null ? INSTANCE.spawn_rarity : 0.1f;
+    }
+    
+    /**
+     * Log all configuration options and their status
+     * Called during initialization and chunk generation when debug logging is enabled
+     */
+    public void logAllConfigOptions() {
+        LOGGER.info("=== AETHELON DEBUG CONFIG DUMP ===");
+        
+        // Spawn Configuration
+        LOGGER.info("SPAWN CONFIG:");
+        LOGGER.info("  water_depth_required: {} (Status: {})", water_depth_required, 
+                   (water_depth_required >= 10 && water_depth_required <= 100) ? "VALID" : "CLAMPED");
+        LOGGER.info("  clearance_above_required: {} (Status: {})", clearance_above_required,
+                   (clearance_above_required >= 20 && clearance_above_required <= 200) ? "VALID" : "CLAMPED");
+        LOGGER.info("  turtle_size_scale: {} (Status: {})", turtle_size_scale,
+                   (turtle_size_scale >= 0.5f && turtle_size_scale <= 10.0f) ? "VALID" : "CLAMPED");
+        LOGGER.info("  spawn_rarity: {} (Status: {})", spawn_rarity,
+                   (spawn_rarity >= 0.001f && spawn_rarity <= 1.0f) ? "VALID" : "CLAMPED");
+        LOGGER.info("  max_world_population: {} (Status: {})", max_world_population,
+                   (max_world_population >= 1 && max_world_population <= 50) ? "VALID" : "CLAMPED");
+        LOGGER.info("  min_distance_between_turtles: {} (Status: VALID)", min_distance_between_turtles);
+        LOGGER.info("  spawn_chance_per_chunk: {} (Status: VALID)", spawn_chance_per_chunk);
+        LOGGER.info("  spawn_height_min: {} (Status: VALID)", spawn_height_min);
+        LOGGER.info("  spawn_height_max: {} (Status: VALID)", spawn_height_max);
+        
+        // New Spawning Configuration
+        LOGGER.info("BIOME SPAWN CONFIG:");
+        LOGGER.info("  oceanSpawnWeight: {} (Status: {})", oceanSpawnWeight,
+                   oceanSpawnWeight >= 0 ? "VALID" : "INVALID");
+        LOGGER.info("  minimumTurtleDistance: {} (Status: VALID)", minimumTurtleDistance);
+        LOGGER.info("  BEACH_SPAWN_WEIGHT: {} (Status: HARDCODED)", BEACH_SPAWN_WEIGHT);
+        LOGGER.info("  SNOWY_BEACH_SPAWN_WEIGHT: {} (Status: HARDCODED)", SNOWY_BEACH_SPAWN_WEIGHT);
+        LOGGER.info("  STONY_SHORE_SPAWN_WEIGHT: {} (Status: HARDCODED)", STONY_SHORE_SPAWN_WEIGHT);
+        
+        // Entity Behavior Configuration
+        LOGGER.info("ENTITY BEHAVIOR CONFIG:");
+        LOGGER.info("  health: {} (Status: {})", health,
+                   (health >= 100.0 && health <= 10000.0) ? "VALID" : "CLAMPED");
+        LOGGER.info("  movement_speed: {} (Status: {})", movement_speed,
+                   (movement_speed >= 0.01 && movement_speed <= 1.0) ? "VALID" : "CLAMPED");
+        LOGGER.info("  normal_movement_speed: {} (Status: {})", normal_movement_speed,
+                   (normal_movement_speed >= 0.01 && normal_movement_speed <= 2.0) ? "VALID" : "CLAMPED");
+        LOGGER.info("  escape_movement_speed: {} (Status: {})", escape_movement_speed,
+                   (escape_movement_speed >= 0.01 && escape_movement_speed <= 3.0) ? "VALID" : "CLAMPED");
+        LOGGER.info("  navigation_speed: {} (Status: {})", navigation_speed,
+                   (navigation_speed >= 0.01 && navigation_speed <= 3.0) ? "VALID" : "CLAMPED");
+        LOGGER.info("  acceleration_factor: {} (Status: {})", acceleration_factor,
+                   (acceleration_factor >= 0.01 && acceleration_factor <= 1.0) ? "VALID" : "CLAMPED");
+        LOGGER.info("  turning_speed: {} (Status: {})", turning_speed,
+                   (turning_speed >= 0.01 && turning_speed <= 1.0) ? "VALID" : "CLAMPED");
+        LOGGER.info("  follow_range: {} (Status: VALID)", follow_range);
+        LOGGER.info("  knockback_resistance: {} (Status: VALID)", knockback_resistance);
+        
+        // AI Behavior Configuration
+        LOGGER.info("AI BEHAVIOR CONFIG:");
+        LOGGER.info("  min_idle_time: {} minutes (Status: VALID)", min_idle_time);
+        LOGGER.info("  max_idle_time: {} minutes (Status: VALID)", max_idle_time);
+        LOGGER.info("  movement_speed_multiplier: {} (Status: VALID)", movement_speed_multiplier);
+        LOGGER.info("  enable_damage_response: {} (Status: {})", enable_damage_response,
+                   enable_damage_response ? "ENABLED" : "DISABLED");
+        LOGGER.info("  pathfinding_range: {} blocks (Status: VALID)", pathfinding_range);
+        
+        // Island Configuration
+        LOGGER.info("ISLAND CONFIG:");
+        LOGGER.info("  enable_islands: {} (Status: {})", enable_islands,
+                   enable_islands ? "ENABLED" : "DISABLED");
+        LOGGER.info("  auto_create_islands: {} (Status: {})", auto_create_islands,
+                   auto_create_islands ? "ENABLED" : "DISABLED");
+        LOGGER.info("  small_island_chance: {} (Status: {})", small_island_chance,
+                   (small_island_chance >= 0.0 && small_island_chance <= 1.0) ? "NORMALIZED" : "INVALID");
+        LOGGER.info("  medium_island_chance: {} (Status: {})", medium_island_chance,
+                   (medium_island_chance >= 0.0 && medium_island_chance <= 1.0) ? "NORMALIZED" : "INVALID");
+        LOGGER.info("  large_island_chance: {} (Status: {})", large_island_chance,
+                   (large_island_chance >= 0.0 && large_island_chance <= 1.0) ? "NORMALIZED" : "INVALID");
+        LOGGER.info("  preserve_island_entities: {} (Status: {})", preserve_island_entities,
+                   preserve_island_entities ? "ENABLED" : "DISABLED");
+        LOGGER.info("  enable_custom_islands: {} (Status: {})", enable_custom_islands,
+                   enable_custom_islands ? "ENABLED" : "DISABLED");
+        LOGGER.info("  max_island_size: {} blocks (Status: VALID)", max_island_size);
+        LOGGER.info("  island_y_offset: {} blocks (Status: VALID)", island_y_offset);
+        LOGGER.info("  default_island_structure: '{}' (Status: VALID)", default_island_structure);
+        LOGGER.info("  movement_blocks_per_tick: {} (Status: VALID)", movement_blocks_per_tick);
+        
+        // Enhanced Damage & Death Configuration
+        LOGGER.info("DAMAGE & DEATH CONFIG:");
+        LOGGER.info("  enable_enhanced_damage: {} (Status: {})", enable_enhanced_damage,
+                   enable_enhanced_damage ? "ENABLED" : "DISABLED");
+        LOGGER.info("  enable_death_explosion: {} (Status: {})", enable_death_explosion,
+                   enable_death_explosion ? "ENABLED" : "DISABLED");
+        LOGGER.info("  explosion_tnt_count: {} (Status: {})", explosion_tnt_count,
+                   (explosion_tnt_count >= 5 && explosion_tnt_count <= 50) ? "VALID" : "CLAMPED");
+        LOGGER.info("  explosion_radius: {} blocks (Status: {})", explosion_radius,
+                   (explosion_radius >= 10.0f && explosion_radius <= 100.0f) ? "VALID" : "CLAMPED");
+        LOGGER.info("  explosion_power: {} (Status: VALID)", explosion_power);
+        LOGGER.info("  destroy_blocks: {} (Status: {})", destroy_blocks,
+                   destroy_blocks ? "ENABLED" : "DISABLED");
+        LOGGER.info("  create_fire: {} (Status: {})", create_fire,
+                   create_fire ? "ENABLED" : "DISABLED");
+        LOGGER.info("  explosion_delay_ticks: {} (Status: VALID)", explosion_delay_ticks);
+        LOGGER.info("  broadcast_death_messages: {} (Status: {})", broadcast_death_messages,
+                   broadcast_death_messages ? "ENABLED" : "DISABLED");
+        LOGGER.info("  remove_island_on_death: {} (Status: {})", remove_island_on_death,
+                   remove_island_on_death ? "ENABLED" : "DISABLED");
+        LOGGER.info("  agitation_decay_rate: {} (Status: {})", agitation_decay_rate,
+                   (agitation_decay_rate >= 1 && agitation_decay_rate <= 10) ? "VALID" : "CLAMPED");
+        LOGGER.info("  enrage_threshold: {} (Status: {})", enrage_threshold,
+                   (enrage_threshold >= 50 && enrage_threshold <= 100) ? "VALID" : "CLAMPED");
+        
+        // Loot System Configuration
+        LOGGER.info("LOOT SYSTEM CONFIG:");
+        LOGGER.info("  enable_loot_drops: {} (Status: {})", enable_loot_drops,
+                   enable_loot_drops ? "ENABLED" : "DISABLED");
+        LOGGER.info("  show_loot_notifications: {} (Status: {})", show_loot_notifications,
+                   show_loot_notifications ? "ENABLED" : "DISABLED");
+        LOGGER.info("  base_experience_reward: {} XP (Status: {})", base_experience_reward,
+                   (base_experience_reward >= 50 && base_experience_reward <= 5000) ? "VALID" : "CLAMPED");
+        LOGGER.info("  loot_quantity_multiplier: {} (Status: {})", loot_quantity_multiplier,
+                   (loot_quantity_multiplier >= 0.1f && loot_quantity_multiplier <= 5.0f) ? "VALID" : "CLAMPED");
+        LOGGER.info("  loot_rarity_bonus: {} (Status: {})", loot_rarity_bonus,
+                   (loot_rarity_bonus >= 0.0f && loot_rarity_bonus <= 1.0f) ? "VALID" : "CLAMPED");
+        LOGGER.info("  enable_custom_turtle_items: {} (Status: {})", enable_custom_turtle_items,
+                   enable_custom_turtle_items ? "ENABLED" : "DISABLED");
+        LOGGER.info("  enable_island_loot: {} (Status: {})", enable_island_loot,
+                   enable_island_loot ? "ENABLED" : "DISABLED");
+        LOGGER.info("  enable_enrage_bonus_loot: {} (Status: {})", enable_enrage_bonus_loot,
+                   enable_enrage_bonus_loot ? "ENABLED" : "DISABLED");
+        LOGGER.info("  max_loot_spread_radius: {} blocks (Status: {})", max_loot_spread_radius,
+                   (max_loot_spread_radius >= 5 && max_loot_spread_radius <= 50) ? "VALID" : "CLAMPED");
+        
+        // Debug Configuration
+        LOGGER.info("DEBUG CONFIG:");
+        LOGGER.info("  enable_debug_logging: {} (Status: ACTIVE)", enable_debug_logging);
+        LOGGER.info("  show_state_particles: {} (Status: {})", show_state_particles,
+                   show_state_particles ? "ENABLED" : "DISABLED");
+        LOGGER.info("  enable_spawn_commands: {} (Status: {})", enable_spawn_commands,
+                   enable_spawn_commands ? "ENABLED" : "DISABLED");
+        
+        LOGGER.info("=== END CONFIG DUMP ===");
+    }
+    
+    /**
+     * Log config status during chunk generation (called when debug logging is enabled)
+     */
+    public static void logChunkGenerationStatus(int chunkX, int chunkZ) {
+        if (INSTANCE != null && INSTANCE.enable_debug_logging) {
+            LOGGER.debug("CHUNK GENERATION DEBUG [{}:{}]:", chunkX, chunkZ);
+            LOGGER.debug("  Spawn conditions: Ocean weight={}, Min distance={}, Max population={}", 
+                        INSTANCE.oceanSpawnWeight, INSTANCE.minimumTurtleDistance, INSTANCE.max_world_population);
+            LOGGER.debug("  Beach spawn weights: Beach={}, Snowy={}, Stony={}", 
+                        BEACH_SPAWN_WEIGHT, SNOWY_BEACH_SPAWN_WEIGHT, STONY_SHORE_SPAWN_WEIGHT);
+            LOGGER.debug("  Water requirements: Depth={}, Clearance={}", 
+                        INSTANCE.water_depth_required, INSTANCE.clearance_above_required);
+            LOGGER.debug("  Spawn chance per chunk: {}, Rarity: {}", 
+                        INSTANCE.spawn_chance_per_chunk, INSTANCE.spawn_rarity);
+            LOGGER.debug("  Island system: Enabled={}, Auto-create={}", 
+                        INSTANCE.enable_islands, INSTANCE.auto_create_islands);
+        }
+    }
+    
+    /**
+     * Check if debug logging is enabled
+     */
+    public static boolean isDebugLoggingEnabled() {
+        return INSTANCE != null && INSTANCE.enable_debug_logging;
     }
 }

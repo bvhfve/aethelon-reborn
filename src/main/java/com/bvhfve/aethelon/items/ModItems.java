@@ -2,7 +2,7 @@ package com.bvhfve.aethelon.items;
 
 import com.bvhfve.aethelon.Aethelon;
 import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterial;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.item.Item;
 import net.minecraft.item.TridentItem;
 import net.minecraft.registry.Registries;
@@ -41,25 +41,18 @@ public class ModItems {
     public static final Item DEEP_SEA_PEARL = registerItem("deep_sea_pearl",
             new Item(new Item.Settings().rarity(Rarity.RARE)));
     
-    // Armor material
-    public static final ArmorMaterial TURTLE_SHELL_ARMOR_MATERIAL = new TurtleShellArmorMaterial();
-    
-    // Turtle Shell Armor Set
+    // Turtle Shell Armor Set (using vanilla turtle helmet as base for now)
     public static final Item TURTLE_SHELL_HELMET = registerItem("turtle_shell_helmet",
-            new TurtleShellArmorItem(TURTLE_SHELL_ARMOR_MATERIAL, ArmorItem.Type.HELMET, 
-                    new Item.Settings().rarity(Rarity.RARE).maxDamage(ArmorItem.Type.HELMET.getMaxDamage(37))));
+            new Item(new Item.Settings().rarity(Rarity.RARE).maxDamage(275)));
     
     public static final Item TURTLE_SHELL_CHESTPLATE = registerItem("turtle_shell_chestplate",
-            new TurtleShellArmorItem(TURTLE_SHELL_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE,
-                    new Item.Settings().rarity(Rarity.RARE).maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(37))));
+            new Item(new Item.Settings().rarity(Rarity.RARE).maxDamage(400)));
     
     public static final Item TURTLE_SHELL_LEGGINGS = registerItem("turtle_shell_leggings",
-            new TurtleShellArmorItem(TURTLE_SHELL_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS,
-                    new Item.Settings().rarity(Rarity.RARE).maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(37))));
+            new Item(new Item.Settings().rarity(Rarity.RARE).maxDamage(375)));
     
     public static final Item TURTLE_SHELL_BOOTS = registerItem("turtle_shell_boots",
-            new TurtleShellArmorItem(TURTLE_SHELL_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
-                    new Item.Settings().rarity(Rarity.RARE).maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(37))));
+            new Item(new Item.Settings().rarity(Rarity.RARE).maxDamage(325)));
     
     // Ancient Trident
     public static final Item ANCIENT_TRIDENT = registerItem("ancient_trident",

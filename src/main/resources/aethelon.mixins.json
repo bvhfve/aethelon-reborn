@@ -8,7 +8,9 @@
     "AethelonEntityCollisionMixin",
     "EntityMixin",
     "FishingBobberEntityMixin",
-    "LivingEntityMixin"
+    "LivingEntityMixin",
+    "StructureTemplateMixin",
+    "ChunkGeneratorMixin"
   ],
   "client": [
   ],

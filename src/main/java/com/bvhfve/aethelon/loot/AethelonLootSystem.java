@@ -8,9 +8,11 @@ import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.slf4j.Logger;
@@ -74,7 +76,7 @@ public class AethelonLootSystem {
         LOGGER.info("Generating loot for defeated Aethelon at {}", turtle.getBlockPos());
         
         Vec3d dropPosition = turtle.getPos();
-        Random random = world.getRandom();
+        net.minecraft.util.math.random.Random random = world.getRandom();
         
         // Calculate loot modifiers
         LootModifiers modifiers = calculateLootModifiers(turtle, killer);
@@ -172,7 +174,7 @@ public class AethelonLootSystem {
     /**
      * Generate guaranteed turtle parts
      */
-    private static List<ItemStack> generateTurtleParts(AethelonEntity turtle, LootModifiers modifiers, Random random) {
+    private static List<ItemStack> generateTurtleParts(AethelonEntity turtle, LootModifiers modifiers, net.minecraft.util.math.random.Random random) {
         List<ItemStack> loot = new ArrayList<>();
         
         // Turtle Shell Fragments (guaranteed)
@@ -201,7 +203,7 @@ public class AethelonLootSystem {
     /**
      * Generate materials and resources
      */
-    private static List<ItemStack> generateMaterials(AethelonEntity turtle, LootModifiers modifiers, Random random) {
+    private static List<ItemStack> generateMaterials(AethelonEntity turtle, LootModifiers modifiers, net.minecraft.util.math.random.Random random) {
         List<ItemStack> loot = new ArrayList<>();
         
         // Prismarine (ocean theme)
@@ -263,15 +265,14 @@ public class AethelonLootSystem {
     /**
      * Generate rare artifacts
      */
-    private static List<ItemStack> generateArtifacts(AethelonEntity turtle, LootModifiers modifiers, Random random) {
+    private static List<ItemStack> generateArtifacts(AethelonEntity turtle, LootModifiers modifiers, net.minecraft.util.math.random.Random random) {
         List<ItemStack> loot = new ArrayList<>();
         
         // Trident (very rare)
         if (random.nextFloat() < 0.1f + modifiers.rarityBonus) {
             ItemStack trident = new ItemStack(Items.TRIDENT);
-            // Add custom name and lore
-            NbtCompound nbt = trident.getOrCreateNbt();
-            nbt.putString("display", "{\"Name\":\"{\\\"text\\\":\\\"Ancient Turtle's Trident\\\",\\\"color\\\":\\\"aqua\\\",\\\"italic\\\":false}\"}");
+            // Add custom name using Data Component System (1.21.4)
+            trident.set(DataComponentTypes.CUSTOM_NAME, Text.literal("Ancient Turtle's Trident").styled(style -> style.withColor(0x00FFFF).withItalic(false)));
             loot.add(trident);
         }
         
@@ -306,7 +307,7 @@ public class AethelonLootSystem {
     /**
      * Generate island-specific loot
      */
-    private static List<ItemStack> generateIslandLoot(AethelonEntity turtle, LootModifiers modifiers, Random random) {
+    private static List<ItemStack> generateIslandLoot(AethelonEntity turtle, LootModifiers modifiers, net.minecraft.util.math.random.Random random) {
         List<ItemStack> loot = new ArrayList<>();
         
         if (!turtle.hasIsland()) {
@@ -346,7 +347,7 @@ public class AethelonLootSystem {
     /**
      * Generate bonus loot for enraged turtles
      */
-    private static List<ItemStack> generateEnrageLoot(AethelonEntity turtle, LootModifiers modifiers, Random random) {
+    private static List<ItemStack> generateEnrageLoot(AethelonEntity turtle, LootModifiers modifiers, net.minecraft.util.math.random.Random random) {
         List<ItemStack> loot = new ArrayList<>();
         
         // Extra rare materials
@@ -379,10 +380,9 @@ public class AethelonLootSystem {
         if (AethelonConfig.INSTANCE.enable_custom_turtle_items) {
             return new ItemStack(ModItems.TURTLE_SHELL_FRAGMENT, count);
         } else {
-            // Fallback to vanilla item with custom name
+            // Fallback to vanilla item with custom name using Data Component System (1.21.4)
             ItemStack item = new ItemStack(Items.TURTLE_SCUTE, count);
-            NbtCompound nbt = item.getOrCreateNbt();
-            nbt.putString("display", "{\"Name\":\"{\\\"text\\\":\\\"Ancient Turtle Shell Fragment\\\",\\\"color\\\":\\\"green\\\",\\\"italic\\\":false}\"}");
+            item.set(DataComponentTypes.CUSTOM_NAME, Text.literal("Ancient Turtle Shell Fragment").styled(style -> style.withColor(0x00FF00).withItalic(false)));
             return item;
         }
     }
@@ -394,10 +394,9 @@ public class AethelonLootSystem {
         if (AethelonConfig.INSTANCE.enable_custom_turtle_items) {
             return new ItemStack(ModItems.ANCIENT_TURTLE_SCALE, count);
         } else {
-            // Fallback to vanilla item with custom name
+            // Fallback to vanilla item with custom name using Data Component System (1.21.4)
             ItemStack item = new ItemStack(Items.PRISMARINE_SHARD, count);
-            NbtCompound nbt = item.getOrCreateNbt();
-            nbt.putString("display", "{\"Name\":\"{\\\"text\\\":\\\"Ancient Turtle Scale\\\",\\\"color\\\":\\\"blue\\\",\\\"italic\\\":false}\"}");
+            item.set(DataComponentTypes.CUSTOM_NAME, Text.literal("Ancient Turtle Scale").styled(style -> style.withColor(0x0000FF).withItalic(false)));
             return item;
         }
     }
@@ -409,10 +408,9 @@ public class AethelonLootSystem {
         if (AethelonConfig.INSTANCE.enable_custom_turtle_items) {
             return new ItemStack(ModItems.TURTLE_HEART);
         } else {
-            // Fallback to vanilla item with custom name
+            // Fallback to vanilla item with custom name using Data Component System (1.21.4)
             ItemStack item = new ItemStack(Items.HEART_OF_THE_SEA);
-            NbtCompound nbt = item.getOrCreateNbt();
-            nbt.putString("display", "{\"Name\":\"{\\\"text\\\":\\\"Heart of the Ancient Turtle\\\",\\\"color\\\":\\\"gold\\\",\\\"italic\\\":false}\"}");
+            item.set(DataComponentTypes.CUSTOM_NAME, Text.literal("Heart of the Ancient Turtle").styled(style -> style.withColor(0xFFD700).withItalic(false)));
             return item;
         }
     }
@@ -420,7 +418,7 @@ public class AethelonLootSystem {
     /**
      * Drop loot items in the world
      */
-    private static void dropLoot(ServerWorld world, Vec3d position, List<ItemStack> loot, Random random) {
+    private static void dropLoot(ServerWorld world, Vec3d position, List<ItemStack> loot, net.minecraft.util.math.random.Random random) {
         for (ItemStack item : loot) {
             if (!item.isEmpty()) {
                 // Spread items around the drop position
@@ -449,7 +447,7 @@ public class AethelonLootSystem {
     /**
      * Generate experience orbs
      */
-    private static void generateExperience(ServerWorld world, Vec3d position, LootModifiers modifiers, Random random) {
+    private static void generateExperience(ServerWorld world, Vec3d position, LootModifiers modifiers, net.minecraft.util.math.random.Random random) {
         int baseExperience = AethelonConfig.INSTANCE.base_experience_reward;
         int totalExperience = Math.round(baseExperience * modifiers.experienceMultiplier);
         
@@ -495,8 +493,10 @@ public class AethelonLootSystem {
         int legendaryItems = 0;
         
         for (ItemStack item : loot) {
-            if (item.hasNbt() && item.getNbt().contains("display")) {
-                String displayName = item.getNbt().getString("display");
+            // Fixed for 1.21.4 - Using Data Component System to check custom names
+            if (item.contains(DataComponentTypes.CUSTOM_NAME)) {
+                Text customName = item.get(DataComponentTypes.CUSTOM_NAME);
+                String displayName = customName != null ? customName.getString() : "";
                 if (displayName.contains("Heart of the Ancient Turtle") || displayName.contains("Ancient Turtle's Trident")) {
                     legendaryItems++;
                 } else if (displayName.contains("Ancient")) {

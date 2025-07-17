@@ -94,7 +94,7 @@ public class AethelonEntity extends WaterCreatureEntity {
         if (!world.isClient && AethelonConfig.INSTANCE.enable_islands && AethelonConfig.INSTANCE.auto_create_islands) {
             // Delay island creation to next tick to ensure turtle is fully initialized
             world.getServer().execute(() -> {
-                if (isValid() && !hasIsland()) {
+                if (!isRemoved() && !hasIsland()) {
                     // Randomly select island type based on configuration
                     IslandManager.IslandType type = selectRandomIslandType();
                     boolean success = createIsland(type);
@@ -586,8 +586,8 @@ public class AethelonEntity extends WaterCreatureEntity {
         return isEnraged;
     }
     
-    public Entity getLastAttacker() {
-        return lastAttacker;
+    public LivingEntity getLastAttacker() {
+        return lastAttacker instanceof LivingEntity ? (LivingEntity) lastAttacker : null;
     }
     
     public float getLastDamageAmount() {
@@ -624,9 +624,11 @@ public class AethelonEntity extends WaterCreatureEntity {
         return new Vec3d(worldX, worldY, worldZ);
     }
     
-    // Spawn conditions
+    // Enhanced spawn conditions with distance checking
     public static boolean canSpawn(EntityType<? extends WaterCreatureEntity> type, WorldAccess world, 
                                   SpawnReason spawnReason, BlockPos pos, Random random) {
+        
+        // Basic water depth and environment checks
         int waterDepthRequired = AethelonConfig.getWaterDepthRequired();
         
         // Must be in very deep water
@@ -651,11 +653,6 @@ public class AethelonEntity extends WaterCreatureEntity {
             return false;
         }
         
-        // Must be in ocean biome
-        if (!world.getBiome(pos).isIn(BiomeTags.IS_OCEAN)) {
-            return false;
-        }
-        
         // Low light level for rarity
         if (world.getLightLevel(pos) > 7) {
             return false;
@@ -663,6 +660,15 @@ public class AethelonEntity extends WaterCreatureEntity {
         
         // Configurable rarity check
         float spawnRarity = AethelonConfig.getSpawnRarity();
-        return random.nextFloat() < spawnRarity;
+        if (random.nextFloat() >= spawnRarity) {
+            return false;
+        }
+        
+        // Enhanced spawn checking with distance and population limits
+        if (world instanceof net.minecraft.world.ServerWorldAccess serverWorldAccess) {
+            return AethelonSpawnChecker.canSpawnWithAllChecks(type, serverWorldAccess, spawnReason, pos, random);
+        }
+        
+        return true; // Allow spawn in non-server contexts
     }
 }
