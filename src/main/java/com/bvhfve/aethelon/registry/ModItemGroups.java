@@ -21,31 +21,33 @@ public class ModItemGroups {
                     .displayName(Text.translatable("itemGroup.aethelon.main"))
                     .icon(() -> new ItemStack(ModItems.TURTLE_HEART))
                     .entries((displayContext, entries) -> {
-                        // Spawn Egg
-                        entries.add(com.bvhfve.aethelon.registry.ModItems.AETHELON_SPAWN_EGG);
+                        // Spawn Egg - temporarily disabled due to initialization order
+                        // if (ModItems.AETHELON_SPAWN_EGG != null) {
+                        //     entries.add(ModItems.AETHELON_SPAWN_EGG);
+                        // }
                         
                         // Raw Materials
-                        entries.add(ModItems.TURTLE_SHELL_FRAGMENT);
-                        entries.add(ModItems.ANCIENT_TURTLE_SCALE);
-                        entries.add(ModItems.TURTLE_HEART);
-                        entries.add(ModItems.CRYSTALLIZED_WATER);
-                        entries.add(ModItems.DEEP_SEA_PEARL);
-                        entries.add(ModItems.ISLAND_ESSENCE);
+                        if (ModItems.TURTLE_SHELL_FRAGMENT != null) entries.add(ModItems.TURTLE_SHELL_FRAGMENT);
+                        if (ModItems.ANCIENT_TURTLE_SCALE != null) entries.add(ModItems.ANCIENT_TURTLE_SCALE);
+                        if (ModItems.TURTLE_HEART != null) entries.add(ModItems.TURTLE_HEART);
+                        if (ModItems.CRYSTALLIZED_WATER != null) entries.add(ModItems.CRYSTALLIZED_WATER);
+                        if (ModItems.DEEP_SEA_PEARL != null) entries.add(ModItems.DEEP_SEA_PEARL);
+                        if (ModItems.ISLAND_ESSENCE != null) entries.add(ModItems.ISLAND_ESSENCE);
                         
                         // Tools & Utilities
-                        entries.add(ModItems.ANCIENT_COMPASS);
-                        entries.add(ModItems.ANCIENT_TRIDENT);
-                        entries.add(ModItems.TURTLE_SHELL_SHIELD);
+                        if (ModItems.ANCIENT_COMPASS != null) entries.add(ModItems.ANCIENT_COMPASS);
+                        if (ModItems.ANCIENT_TRIDENT != null) entries.add(ModItems.ANCIENT_TRIDENT);
+                        if (ModItems.TURTLE_SHELL_SHIELD != null) entries.add(ModItems.TURTLE_SHELL_SHIELD);
                         
                         // Armor Set
-                        entries.add(ModItems.TURTLE_SHELL_HELMET);
-                        entries.add(ModItems.TURTLE_SHELL_CHESTPLATE);
-                        entries.add(ModItems.TURTLE_SHELL_LEGGINGS);
-                        entries.add(ModItems.TURTLE_SHELL_BOOTS);
-                        entries.add(ModItems.AQUATIC_BOOTS);
+                        if (ModItems.TURTLE_SHELL_HELMET != null) entries.add(ModItems.TURTLE_SHELL_HELMET);
+                        if (ModItems.TURTLE_SHELL_CHESTPLATE != null) entries.add(ModItems.TURTLE_SHELL_CHESTPLATE);
+                        if (ModItems.TURTLE_SHELL_LEGGINGS != null) entries.add(ModItems.TURTLE_SHELL_LEGGINGS);
+                        if (ModItems.TURTLE_SHELL_BOOTS != null) entries.add(ModItems.TURTLE_SHELL_BOOTS);
+                        if (ModItems.AQUATIC_BOOTS != null) entries.add(ModItems.AQUATIC_BOOTS);
                         
                         // Building Blocks
-                        entries.add(ModItems.TURTLE_SCALE_BLOCK);
+                        if (ModItems.TURTLE_SCALE_BLOCK != null) entries.add(ModItems.TURTLE_SCALE_BLOCK);
                     })
                     .build());
     

@@ -99,7 +99,7 @@ public class ModItems {
                 new Item(new Item.Settings().rarity(Rarity.UNCOMMON).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "turtle_scale_block")))));
         
         AETHELON_SPAWN_EGG = registerItem("aethelon_spawn_egg",
-                new net.minecraft.item.SpawnEggItem(com.bvhfve.aethelon.registry.ModEntityTypes.AETHELON, 0x4A90A4, 0x7FC7AF, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "aethelon_spawn_egg")))));
+                new net.minecraft.item.SpawnEggItem(com.bvhfve.aethelon.registry.ModEntityTypes.AETHELON, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "aethelon_spawn_egg")))));
     }
     
     /**
