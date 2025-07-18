@@ -1,69 +1,8 @@
 # Aethelon Testing & Next Phase Guide
 
-This document outlines what to test before moving to the next development phase, how to create NBT structures, and suggestions for missing item textures.
+This comprehensive document outlines all testing procedures for the Aethelon mod, including newly implemented features like the Advanced Ancient Trident, Gem Upgrade System, and Perfect Accuracy mechanics. Use this guide to systematically test all mod features before moving to the next development phase.
 
 ## 🧪 **Phase 4 & 5 Testing Checklist**
-
-### **Turtle Shell Shield Testing** ⚔️
-
-#### **Quick Crafting Guide**
-To easily test the turtle shell shield, use these commands in creative mode or with cheats:
-
-```mcfunction
-# Give yourself the crafting materials
-/give @p aethelon:turtle_shell_fragment 6
-/give @p aethelon:deep_sea_pearl 1
-
-# Or give the shield directly
-/give @p aethelon:turtle_shell_shield 1
-```
-
-#### **Crafting Recipe**
-```
-[S][P][S]
-[S][S][S]
-[ ][S][ ]
-
-S = Turtle Shell Fragment
-P = Deep Sea Pearl
-```
-
-#### **Testing Checklist**
-- [ ] **Crafting**: Recipe works correctly with turtle shell fragments and deep sea pearl
-- [ ] **Durability**: Shield has 1008 durability (check with F3+H advanced tooltips) ✅ **FIXED**
-- [ ] **Blocking**: Can block melee attacks (reduces damage)
-- [ ] **Projectile Defense**: Blocks arrows, crossbow bolts, and other projectiles
-- [ ] **Shield Animations**: Proper blocking animation when right-clicking
-- [ ] **Enchantments**: Can be enchanted with Unbreaking, Mending, etc.
-- [ ] **Repair**: Can be repaired with turtle shell fragments in anvil
-- [ ] **Creative Tab**: Appears in Combat creative tab
-- [ ] **Sound Effects**: Makes proper shield blocking sounds
-- [ ] **Visual**: Shield model displays correctly in hand and when blocking
-
-#### **Recent Fixes Applied** 🔧
-- ✅ **Durability Issue**: Fixed shield durability registration (now properly shows 1008)
-- ✅ **Recipe Issue**: Recreated recipe file with proper formatting
-- ✅ **Build Issue**: Fixed entity registration order to prevent crashes
-- ✅ **Durability Loss**: Implemented mixin solution based on Enderite mod approach
-- ✅ **Repair System**: Added turtle shell fragment repair compatibility
-
-#### **Final Solution** 🎯
-**Problem**: Shield wasn't losing durability when blocking damage
-**Solution**: Created `TurtleShellShieldMixin` that injects into `PlayerEntity.damageShield()` method
-**Inspiration**: Based on Enderite mod's proven approach for custom shields
-
-#### **Current Status** 📊
-- **Durability Display**: ✅ Shows 1008 max durability (3x vanilla)
-- **Durability Loss**: ✅ Properly loses durability when blocking (via mixin)
-- **Shield Functionality**: ✅ Blocks attacks and projectiles
-- **Crafting Recipe**: ✅ Works with turtle shell fragments + deep sea pearl
-- **Repair**: ✅ Can be repaired with turtle shell fragments in anvil
-- **Build**: ✅ Compiles without errors
-
-#### **Performance Testing**
-- [ ] **Multiple Shields**: No lag when multiple players use shields
-- [ ] **Rapid Blocking**: No issues with rapid block/unblock actions
-- [ ] **Durability Loss**: Proper durability reduction when blocking damage
 
 ### **Core Structure System Testing**
 
@@ -445,4 +384,311 @@ After completing testing and content creation:
 4. **Content**: Sufficient variety in structures and items
 5. **Polish**: Professional appearance and user experience
 
-Once all items are checked off, the system will be ready for the next development phase! 🎯
+## 🔱 **Advanced Ancient Trident Testing**
+
+### **Enhanced Underwater Powers**
+- [ ] **Underwater Activation**
+  - Dive fully underwater and right-click with Ancient Trident
+  - Verify effects: Dolphin's Grace (20s), Water Breathing (30s), Night Vision (30s)
+  - Check bubble particle effects spawn around player
+  - Confirm trident name changes to "Ancient Trident of the Depths"
+  - Test 5-second cooldown prevents spam
+
+- [ ] **Aquatic Creature Control**
+  - Stand in rain or shallow water (not fully submerged)
+  - Right-click with Ancient Trident near fish, squids, dolphins
+  - Verify creatures get glowing effect and heart particles
+  - Check actionbar message shows number of controlled creatures
+  - Test 16-block range and 10-second duration
+
+### **Enhanced Combat**
+- [ ] **Projectile Enhancement**
+  - Throw trident and verify 1.5x increased speed
+  - Test enhanced damage in aquatic environments
+  - Attack aquatic mobs to test 30% pacification chance
+
+- [ ] **Perfect Accuracy System**
+  - Throw Ancient Trident at distant targets
+  - Verify trident flies exactly where crosshair is aimed
+  - Test that there's no gravity drop or inaccuracy
+  - Compare with regular trident accuracy
+  - Test at various distances and angles
+
+- [ ] **Tooltip System**
+  - Hover over trident to see ability descriptions
+  - Use underwater ability and check for "Awakened Form" tooltip
+  - Verify all formatting and colors display correctly
+
+### **Configuration Testing**
+- [ ] **Modify Constants** (in AncientTridentItem.java)
+  ```java
+  DOLPHINS_GRACE_DURATION = 400;    // Test different durations
+  AQUATIC_CONTROL_RANGE = 16;       // Test different ranges
+  COOLDOWN_TICKS = 100;             // Test cooldown timing
+  ```
+
+## 🔮 **Gem Upgrade System Testing**
+
+### **Basic Upgrade Mechanics**
+- [ ] **Anvil Upgrade Process**
+  - Hold weapon in one hand, gems in other hand
+  - Right-click any anvil to trigger upgrade
+  - Verify upgrade success message appears
+  - Check weapon name changes to show tier (e.g., "Iron Sword [Aquatic II]")
+  - Test 12% anvil damage chance per upgrade
+
+- [ ] **Upgrade Progression**
+  - Test tier 1: Requires 1 gem
+  - Test tier 2: Requires 2 more gems (3 total)
+  - Test tier 3: Requires 3 more gems (6 total)
+  - Test tier 4: Requires 4 more gems (10 total)
+  - Test tier 5: Requires 5 more gems (15 total)
+  - Verify maximum tier reached message
+
+- [ ] **Gem Type Consistency**
+  - Start upgrade with one gem type (e.g., Turtle Scale)
+  - Try to upgrade with different gem type - should fail
+  - Verify error message about mixing gem types
+  - Complete upgrade with same gem type - should succeed
+
+### **Elemental Effects Testing**
+
+#### **🌊 Aquatic Enhancement (Turtle Scale)**
+- [ ] **Combat Effects**
+  - Attack enemies with upgraded weapon
+  - Verify enemies get slowness effect (5-13 seconds)
+  - Check bubble particles appear around target
+  - Confirm wielder gets water breathing if not already present
+  - Test fish swimming sound plays
+
+#### **❤️ Vitality Enhancement (Turtle Heart)**
+- [ ] **Healing & Weakness**
+  - Attack enemies and verify wielder heals (1-5 hearts per tier)
+  - Check enemies get weakness effect (4-9 seconds)
+  - Verify heart particles appear above wielder
+  - Test weakness particles appear on target
+  - Confirm level up sound plays
+
+#### **❄️ Frost Enhancement (Crystallized Water)**
+- [ ] **Freezing Effects**
+  - Attack enemies and verify they get frozen (3-12 seconds)
+  - Check slowness effect applies with freeze
+  - Verify snowflake particles spawn around target
+  - Test glass breaking sound effect
+
+#### **⚡ Lightning Enhancement (Deep Sea Pearl)**
+- [ ] **Chain Lightning**
+  - Attack enemy near other mobs
+  - Verify 30-60% chance for chain lightning to nearby entities
+  - Check glowing effect on primary target
+  - Test electric spark particles
+  - Confirm thunder sound effect
+  - Verify chain damage affects up to [tier] nearby entities
+
+#### **🌍 Earth Enhancement (Island Essence)**
+- [ ] **Launch & Fatigue**
+  - Attack enemies and verify upward launch (0.5-1.3 blocks)
+  - Check mining fatigue effect applies (5-10 seconds)
+  - Test block crack particles from ground
+  - Confirm stone breaking sound
+
+### **Damage Scaling Testing**
+- [ ] **Tier 1**: +20% damage bonus
+- [ ] **Tier 2**: +40% damage bonus
+- [ ] **Tier 3**: +60% damage bonus
+- [ ] **Tier 4**: +80% damage bonus
+- [ ] **Tier 5**: +100% damage bonus
+
+### **Tooltip System Testing**
+- [ ] **Unupgraded Weapons**
+  - Hover over compatible weapons
+  - Verify "Can be upgraded with gems at an anvil" hint appears
+
+- [ ] **Upgraded Weapons**
+  - Check tier display (e.g., "Aquatic Tier III")
+  - Verify damage bonus percentage shown
+  - Confirm elemental effect description appears
+  - Test all formatting and colors correct
+
+### **Weapon Compatibility Testing**
+- [ ] **Vanilla Swords**: Wood, Stone, Iron, Gold, Diamond, Netherite
+- [ ] **Vanilla Axes**: Wood, Stone, Iron, Gold, Diamond, Netherite  
+- [ ] **Vanilla Trident**: Regular trident
+- [ ] **Ancient Trident**: Custom mod trident
+
+## 🎯 **Perfect Accuracy System Testing**
+
+### **Ancient Trident Accuracy**
+- [ ] **Basic Accuracy Test**
+  - Throw Ancient Trident at distant target (50+ blocks)
+  - Verify trident flies exactly where crosshair is aimed
+  - Compare with regular trident - should show clear difference
+  - Test at various angles (up, down, diagonal)
+
+- [ ] **Gravity Elimination**
+  - Throw trident horizontally at long distance
+  - Verify no gravity drop occurs
+  - Test that trident maintains straight line flight
+  - Compare trajectory with regular trident
+
+- [ ] **Range Testing**
+  - Test accuracy at 10, 25, 50, 100+ block distances
+  - Verify consistent accuracy at all ranges
+  - Test in different environments (underwater, in air, in rain)
+
+### **Tooltip Verification**
+- [ ] **Perfect Accuracy Indicator**
+  - Hover over Ancient Trident
+  - Verify "Perfect accuracy when thrown" appears in tooltip
+  - Check "Thrown tridents fly exactly where aimed" description
+
+## 🌊 **Advanced Ancient Trident Features**
+
+### **Enhanced Underwater Powers**
+- [ ] **Underwater Activation**
+  - Dive fully underwater and right-click with Ancient Trident
+  - Verify effects: Dolphin's Grace (20s), Water Breathing (30s), Night Vision (30s)
+  - Check bubble particle effects spawn around player
+  - Confirm trident name changes to "Ancient Trident of the Depths"
+  - Test 5-second cooldown prevents spam
+
+- [ ] **Aquatic Creature Control**
+  - Stand in rain or shallow water (not fully submerged)
+  - Right-click with Ancient Trident near fish, squids, dolphins
+  - Verify creatures get glowing effect and heart particles
+  - Check actionbar message shows number of controlled creatures
+  - Test 16-block range and 10-second duration
+
+### **Enhanced Combat**
+- [ ] **Projectile Enhancement**
+  - Throw trident and verify 1.5x increased speed
+  - Test enhanced damage in aquatic environments
+  - Attack aquatic mobs to test 30% pacification chance
+
+- [ ] **Perfect Accuracy System**
+  - Throw Ancient Trident at distant targets
+  - Verify trident flies exactly where crosshair is aimed
+  - Test that there's no gravity drop or inaccuracy
+  - Compare with regular trident accuracy
+  - Test at various distances and angles
+
+- [ ] **Tooltip System**
+  - Hover over trident to see ability descriptions
+  - Use underwater ability and check for "Awakened Form" tooltip
+  - Verify all formatting and colors display correctly
+
+### **Configuration Testing**
+- [ ] **Modify Constants** (in AncientTridentItem.java)
+  ```java
+  DOLPHINS_GRACE_DURATION = 400;    // Test different durations
+  AQUATIC_CONTROL_RANGE = 16;       // Test different ranges
+  COOLDOWN_TICKS = 100;             // Test cooldown timing
+  ```
+
+## 📋 **Core System Testing**
+
+### **Entity System Testing**
+- [ ] **Aethelon Entity Spawning**
+  - Use spawn egg in deep ocean biomes
+  - Verify entity spawns with correct size (8x4 blocks)
+  - Test entity AI states (IDLE, MOVING, TRANSITIONING)
+  - Check collision detection works properly
+
+- [ ] **Island Generation**
+  - Verify islands spawn on turtle backs
+  - Test different island sizes (Small, Medium, Large)
+  - Check structure placement works correctly
+  - Verify biome-appropriate vegetation
+
+### **Item System Testing**
+- [ ] **Turtle-Themed Items**
+  - Test all crafting recipes work correctly
+  - Verify item tooltips display properly
+  - Check creative tab organization
+  - Test item durability and functionality
+
+### **Loot System Testing**
+- [ ] **Death Loot Generation**
+  - Defeat Aethelon entities
+  - Verify loot drops based on rarity system
+  - Test experience orb generation
+  - Check loot modifiers work correctly
+
+## 🔧 **Integration Testing**
+
+### **Mod Compatibility**
+- [ ] **Test with popular ocean mods**
+- [ ] **Verify no conflicts with other entity mods**
+- [ ] **Check performance with large mod packs**
+
+### **Performance Testing**
+- [ ] **Entity count limits**
+- [ ] **Island rendering performance**
+- [ ] **Memory usage monitoring**
+
+## 📝 **Documentation & Polish**
+
+### **User Experience**
+- [ ] **All tooltips accurate and helpful**
+- [ ] **Sound effects appropriate and balanced**
+- [ ] **Particle effects enhance gameplay**
+- [ ] **Error messages clear and informative**
+
+### **Configuration**
+- [ ] **All config options work correctly**
+- [ ] **Default values provide good gameplay**
+- [ ] **Config changes apply without restart where possible**
+
+---
+
+## ✅ **Completion Checklist**
+
+Once all items above are checked off:
+- [ ] **All core features tested and working**
+- [ ] **All new features (Gem Upgrades, Perfect Accuracy) tested**
+- [ ] **No critical bugs or crashes**
+- [ ] **Performance acceptable in test environments**
+- [ ] **Documentation updated and accurate**
+
+**The system will be ready for the next development phase!** 🎯
+
+---
+
+## 🛠️ **NBT Structure Creation Guide**
+
+### **Step 1: Design Your Island**
+Use WorldEdit or similar tools to create custom island structures:
+```
+//wand                    // Get selection tool
+//pos1                    // Set first position
+//pos2                    // Set second position
+//copy                    // Copy the selection
+//schem save island_name  // Save as schematic
+```
+
+### **Step 2: Convert to NBT**
+```
+//schem load island_name
+//paste
+//sel                     // Select the pasted structure
+//copy
+/nbt save island_name     // Save as NBT file
+```
+
+### **Step 3: Export the Structure**
+Place the .nbt file in the appropriate directory:
+```
+src/main/resources/data/aethelon/structures/islands/[size]/[name].nbt
+```
+
+**Size Categories:**
+- `small/` - 16x8x16 blocks maximum
+- `medium/` - 24x12x24 blocks maximum  
+- `large/` - 32x16x32 blocks maximum
+- `special/` - Unique structures (boss islands, treasure islands)
+
+### **Step 4: Test the Structure**
+```java
+// In a test environment
+DatapackStructureManager.spawnStructure(world, "your_island_name", position);
+```

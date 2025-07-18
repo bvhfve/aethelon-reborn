@@ -8,7 +8,10 @@
     "nbt": "{Potion:\"minecraft:water_breathing\"}"
   },
   "result": {
-    "item": "minecraft:potion",
+    "id": "minecraft:potion",
     "nbt": "{Potion:\"minecraft:long_water_breathing\"}"
   }
 }
+
+
+

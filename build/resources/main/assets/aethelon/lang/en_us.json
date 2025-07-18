@@ -23,7 +23,7 @@
   "tooltip.aethelon.turtle_shell_chestplate": "Grants resistance when submerged in water",
   "tooltip.aethelon.turtle_shell_leggings": "Increases swimming speed and reduces water drag",
   "tooltip.aethelon.turtle_shell_boots": "Allows walking on water surface for short periods",
-  "tooltip.aethelon.ancient_trident": "Enhanced trident with aquatic powers and dolphin's grace",
+  "tooltip.aethelon.ancient_trident": "Legendary weapon with perfect accuracy and ancient turtle powers",
   "tooltip.aethelon.turtle_shell_shield": "Durable shield that provides extra protection underwater",
   "tooltip.aethelon.aquatic_boots": "Lightweight boots that enhance underwater movement",
   "tooltip.aethelon.turtle_scale_block": "Decorative block made from compressed turtle scales",
@@ -53,5 +53,24 @@
   "aethelon.state.idle": "Idle",
   "aethelon.state.moving": "Moving",
   "aethelon.state.transitioning": "Transitioning",
-  "aethelon.state.damaged": "Agitated"
+  "aethelon.state.damaged": "Agitated",
+  
+  "aethelon.upgrade.aquatic": "Aquatic Enhancement",
+  "aethelon.upgrade.vitality": "Vitality Enhancement", 
+  "aethelon.upgrade.frost": "Frost Enhancement",
+  "aethelon.upgrade.lightning": "Lightning Enhancement",
+  "aethelon.upgrade.earth": "Earth Enhancement",
+  
+  "aethelon.upgrade.effect.aquatic": "Slows enemies and grants water breathing",
+  "aethelon.upgrade.effect.vitality": "Heals wielder and weakens enemies",
+  "aethelon.upgrade.effect.frost": "Freezes and slows targets",
+  "aethelon.upgrade.effect.lightning": "Lightning effects with chain damage",
+  "aethelon.upgrade.effect.earth": "Launches enemies and reduces mining speed",
+  
+  "aethelon.upgrade.hint": "Can be upgraded with gems at an anvil",
+  "aethelon.upgrade.max_tier": "This weapon is already at maximum upgrade tier!",
+  "aethelon.upgrade.mixed_gems": "Cannot mix different gem types!",
+  "aethelon.upgrade.insufficient_gems": "Need %d gems for next upgrade (have %d)",
+  "aethelon.upgrade.success": "Weapon upgraded to %s Tier %s!",
+  "aethelon.upgrade.anvil_broken": "The anvil broke from the intense upgrade process!"
 }

@@ -1,7 +1,7 @@
-[16:35:06] [main/WARN] (FabricLoader/Knot) Class path entries reference missing files: C:\Users\MSI\aethelon-reborn\build\resources\client - the game may not load properly!
-[16:35:06] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.4 with Fabric Loader 0.16.9
-[16:35:06] [main/INFO] (FabricLoader) Loading 63 mods:
-	- aethelon 1.0.9
+[19:37:47] [main/WARN] (FabricLoader/Knot) Class path entries reference missing files: C:\Users\MSI\aethelon-reborn\build\resources\client - the game may not load properly!
+[19:37:47] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.4 with Fabric Loader 0.16.9
+[19:37:47] [main/INFO] (FabricLoader) Loading 63 mods:
+	- aethelon 1.1.0
 	- architectury 15.0.3
 	- cloth-config 17.0.144
 	   \-- cloth-basic-math 0.6.1
@@ -64,243 +64,163 @@
 	- worldedit 7.3.11+7055-8357a12
 	- xaerominimap 25.2.10
 	- xaeroworldmap 1.39.12
-[16:35:20] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/MSI/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.4+mixin.0.8.7/6a12aacc794f1078458433116e9ed42c1cc98096/sponge-mixin-0.15.4+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
-[16:35:20] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
-[16:35:21] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_21
-[16:35:21] [main/WARN] (FabricLoader/Mixin) Reference map 'aethelon.refmap.json' for aethelon.mixins.json could not be read. If this is a development environment you can ignore this message
-[16:35:25] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
-[16:35:27] [Datafixer Bootstrap/INFO] (Minecraft) 243 Datafixer optimizations took 1075 milliseconds
-[16:35:42] [Render thread/INFO] (Minecraft) Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[16:35:42] [Render thread/INFO] (Minecraft) Setting user: Player131
-[16:35:43] [Render thread/INFO] (aethelon) Initializing Aethelon - Giant Sea Turtles mod...
-[16:35:43] [Render thread/INFO] (aethelon-config) Loaded Aethelon config from file
-[16:35:43] [Render thread/INFO] (aethelon-config) Aethelon config initialized - Water depth: 30, Clearance: 50, Size: 4.0, Rarity: 0.1
-[16:35:43] [Render thread/INFO] (aethelon-config) === AETHELON DEBUG CONFIG DUMP ===
-[16:35:43] [Render thread/INFO] (aethelon-config) SPAWN CONFIG:
-[16:35:43] [Render thread/INFO] (aethelon-config)   water_depth_required: 30 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   clearance_above_required: 50 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   turtle_size_scale: 4.0 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   spawn_rarity: 0.1 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   max_world_population: 3 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   min_distance_between_turtles: 5000 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   spawn_chance_per_chunk: 1.0E-4 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   spawn_height_min: 45 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   spawn_height_max: 62 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config) BIOME SPAWN CONFIG:
-[16:35:43] [Render thread/INFO] (aethelon-config)   oceanSpawnWeight: 5 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   minimumTurtleDistance: 128 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   BEACH_SPAWN_WEIGHT: 15 (Status: HARDCODED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   SNOWY_BEACH_SPAWN_WEIGHT: 10 (Status: HARDCODED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   STONY_SHORE_SPAWN_WEIGHT: 12 (Status: HARDCODED)
-[16:35:43] [Render thread/INFO] (aethelon-config) ENTITY BEHAVIOR CONFIG:
-[16:35:43] [Render thread/INFO] (aethelon-config)   health: 2000.0 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   movement_speed: 0.05 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   normal_movement_speed: 0.45 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   escape_movement_speed: 0.75 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   navigation_speed: 0.75 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   acceleration_factor: 0.3 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   turning_speed: 0.15 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   follow_range: 128.0 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   knockback_resistance: 1.0 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config) AI BEHAVIOR CONFIG:
-[16:35:43] [Render thread/INFO] (aethelon-config)   min_idle_time: 20.0 minutes (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   max_idle_time: 60.0 minutes (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   movement_speed_multiplier: 1.0 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   enable_damage_response: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   pathfinding_range: 500.0 blocks (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config) ISLAND CONFIG:
-[16:35:43] [Render thread/INFO] (aethelon-config)   enable_islands: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   auto_create_islands: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   small_island_chance: 0.5 (Status: NORMALIZED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   medium_island_chance: 0.35 (Status: NORMALIZED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   large_island_chance: 0.15 (Status: NORMALIZED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   preserve_island_entities: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   enable_custom_islands: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   max_island_size: 64 blocks (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   island_y_offset: 2 blocks (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   default_island_structure: 'small_island' (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   movement_blocks_per_tick: 5 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config) DAMAGE & DEATH CONFIG:
-[16:35:43] [Render thread/INFO] (aethelon-config)   enable_enhanced_damage: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   enable_death_explosion: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   explosion_tnt_count: 15 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   explosion_radius: 25.0 blocks (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   explosion_power: 8.0 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   destroy_blocks: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   create_fire: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   explosion_delay_ticks: 60 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   broadcast_death_messages: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   remove_island_on_death: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   agitation_decay_rate: 1 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   enrage_threshold: 75 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config) LOOT SYSTEM CONFIG:
-[16:35:43] [Render thread/INFO] (aethelon-config)   enable_loot_drops: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   show_loot_notifications: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   base_experience_reward: 500 XP (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   loot_quantity_multiplier: 1.0 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   loot_rarity_bonus: 0.0 (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config)   enable_custom_turtle_items: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   enable_island_loot: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   enable_enrage_bonus_loot: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   max_loot_spread_radius: 10 blocks (Status: VALID)
-[16:35:43] [Render thread/INFO] (aethelon-config) DEBUG CONFIG:
-[16:35:43] [Render thread/INFO] (aethelon-config)   enable_debug_logging: true (Status: ACTIVE)
-[16:35:43] [Render thread/INFO] (aethelon-config)   show_state_particles: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config)   enable_spawn_commands: true (Status: ENABLED)
-[16:35:43] [Render thread/INFO] (aethelon-config) === END CONFIG DUMP ===
-[16:35:43] [Render thread/INFO] (aethelon) Registering Aethelon entity types...
-[16:35:43] [Render thread/INFO] (aethelon) Successfully registered 1 entity types
-[16:35:43] [Render thread/INFO] (aethelon) Registering custom items for aethelon
-[16:35:43] [Render thread/INFO] (aethelon) Registered spawn eggs for aethelon
-[16:35:43] [Render thread/INFO] (aethelon) Registering item groups for aethelon
-[16:35:43] [Render thread/INFO] (aethelon) Setting up Aethelon spawn conditions
-[16:35:43] [Render thread/INFO] (aethelon) Beach spawn weights: Beach=15, Snowy Beach=10, Stony Shore=12
-[16:35:43] [Render thread/INFO] (aethelon) Ocean spawn weight: 5
-[16:35:43] [Render thread/INFO] (aethelon) Minimum turtle distance: 128 blocks
-[16:35:43] [Render thread/INFO] (aethelon) Aethelon spawn conditions registered
-[16:35:43] [Render thread/INFO] (aethelon) Registering Aethelon structure components...
-[16:35:43] [Render thread/INFO] (aethelon) Aethelon structure components registered successfully!
-[16:35:43] [Render thread/INFO] (aethelon) Initializing Datapack Structure Manager...
-[16:35:43] [Render thread/INFO] (aethelon) Registered 13 datapack structures
-[16:35:43] [Render thread/INFO] (AethelonCompat) Initializing Aethelon mod compatibility system...
-[16:35:43] [Render thread/INFO] (AethelonCompat) Aethelon compatibility system initialized successfully!
-[16:35:43] [Render thread/INFO] (aethelon) Aethelon mod initialized successfully!
-[16:35:44] [Render thread/INFO] (REI) [REI] Config loaded
-[16:35:44] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id roughlyenoughitems:request_tags_s2c
-[16:35:44] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id roughlyenoughitems:request_tags_c2s
-[16:35:44] [Render thread/INFO] (REI) [REI] Registered plugin provider DefaultPlugin [roughlyenoughitems] for REICommonPlugin
-[16:35:44] [Render thread/INFO] (REI) [REI] Registered plugin provider DefaultRuntimePlugin [roughlyenoughitems] for REICommonPlugin
-[16:35:44] [Render thread/INFO] (REI) [REI] Registered plugin provider FabricFluidAPISupportPlugin for REICommonPlugin
-[16:35:44] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id roughlyenoughitems:delete_item
-[16:35:44] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id roughlyenoughitems:create_item
-[16:35:44] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id roughlyenoughitems:create_item_grab
-[16:35:44] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id roughlyenoughitems:create_item_hotbar
-[16:35:44] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id roughlyenoughitems:move_items_new
-[16:35:45] [Render thread/INFO] (PlatformManager) Got request to register class com.sk89q.worldedit.fabric.FabricPlatform with WorldEdit [com.sk89q.worldedit.extension.platform.PlatformManager@5a49ed70]
-[16:35:45] [Render thread/INFO] (FabricWorldEdit) WorldEdit for Fabric (version 7.3.11+7055-8357a12) is loaded
-[16:35:45] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id architectury:spawn_entity_packet
-[16:35:45] [Render thread/INFO] (aethelon) Initializing Aethelon client-side features...
-[16:35:45] [Render thread/INFO] (aethelon) Aethelon client initialization successful!
-[16:35:45] [Render thread/INFO] (XaeroMinimap) Loading Xaero's Minimap - Stage 1/2
-[16:35:46] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
-[16:35:46] [Render thread/INFO] (WorldMap) Loading Xaero's World Map - Stage 1/2
-[16:35:48] [Render thread/INFO] (REI) [REI] Registered plugin provider DefaultClientPlugin [roughlyenoughitems] for REIClientPlugin
-[16:35:48] [Render thread/INFO] (REI) [REI] Registered plugin provider DefaultClientRuntimePlugin [roughlyenoughitems] for REIClientPlugin
-[16:35:48] [Render thread/INFO] (REI) [REI] Registered plugin provider HideIngredientsFromTagsPlugin [roughlyenoughitems] for REIClientPlugin
-[16:35:48] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id roughlyenoughitems:ci_msg
-[16:35:48] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id roughlyenoughitems:og_not_enough
-[16:35:48] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id roughlyenoughitems:sync_displays
-[16:35:49] [Render thread/INFO] (Minecraft) Backend library: LWJGL version 3.3.3-snapshot
-[16:35:52] [Render thread/INFO] (Minecraft) Reloading ResourceManager: vanilla, fabric, aethelon, cloth-config, fabric-api, fabric-api-base, fabric-api-lookup-api-v1, fabric-biome-api-v1, fabric-block-api-v1, fabric-block-view-api-v2, fabric-blockrenderlayer-v1, fabric-client-gametest-api-v1, fabric-client-tags-api-v1, fabric-command-api-v1, fabric-command-api-v2, fabric-commands-v0, fabric-content-registries-v0, fabric-convention-tags-v1, fabric-convention-tags-v2, fabric-crash-report-info-v1, fabric-data-attachment-api-v1, fabric-data-generation-api-v1, fabric-dimensions-v1, fabric-entity-events-v1, fabric-events-interaction-v0, fabric-game-rule-api-v1, fabric-gametest-api-v1, fabric-item-api-v1, fabric-item-group-api-v1, fabric-key-binding-api-v1, fabric-keybindings-v0, fabric-lifecycle-events-v1, fabric-loot-api-v2, fabric-loot-api-v3, fabric-message-api-v1, fabric-model-loading-api-v1, fabric-networking-api-v1, fabric-object-builder-api-v1, fabric-particles-v1, fabric-recipe-api-v1, fabric-registry-sync-v0, fabric-renderer-api-v1, fabric-renderer-indigo, fabric-rendering-data-attachment-v1, fabric-rendering-fluids-v1, fabric-rendering-v1, fabric-resource-conditions-api-v1, fabric-resource-loader-v0, fabric-screen-api-v1, fabric-screen-handler-api-v1, fabric-sound-api-v1, fabric-tag-api-v1, fabric-transfer-api-v1, fabric-transitive-access-wideners-v1, fabricloader, roughlyenoughitems, worldedit, xaerominimap, xaeroworldmap
-[16:35:53] [Worker-Main-7/INFO] (Minecraft) Found unifont_all_no_pua-16.0.01.hex, loading
-[16:35:53] [Worker-Main-2/INFO] (Minecraft) Found unifont_jp_patch-16.0.01.hex, loading
-[16:35:53] [Render thread/INFO] (WorldMap) Loading Xaero's World Map - Stage 2/2
-[16:35:53] [Render thread/INFO] (WorldMap) New world map region cache hash code: -1580040234
-[16:35:53] [Render thread/INFO] (WorldMap) Registered player tracker system: map_synced
-[16:35:53] [Render thread/INFO] (WorldMap) Xaero's WorldMap Mod: Xaero's minimap found!
-[16:35:53] [Render thread/INFO] (WorldMap) Registered player tracker system: minimap_synced
-[16:35:53] [Render thread/INFO] (WorldMap) No Optifine!
-[16:35:53] [Render thread/INFO] (WorldMap) Xaero's World Map: No Vivecraft!
-[16:35:53] [Render thread/INFO] (XaeroMinimap) Loading Xaero's Minimap - Stage 2/2
-[16:35:55] [Render thread/INFO] (MinimapLogs) Registered player tracker system: minimap_synced
-[16:35:55] [Render thread/INFO] (MinimapLogs) Xaero's Minimap: World Map found!
-[16:35:55] [Render thread/INFO] (MinimapLogs) No Optifine!
-[16:35:55] [Render thread/INFO] (MinimapLogs) Xaero's Minimap: No Vivecraft!
-[16:35:55] [Render thread/INFO] (Minecraft) OpenAL initialized on device OpenAL Soft on Speakers (Realtek(R) Audio)
-[16:35:55] [Render thread/INFO] (Minecraft) Sound engine started
-[16:35:55] [Render thread/INFO] (Minecraft) Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
-[16:35:56] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
-[16:35:56] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[16:35:56] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[16:35:56] [Render thread/INFO] (Minecraft) Created: 2048x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
-[16:35:56] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[16:35:56] [Render thread/INFO] (Minecraft) Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
-[16:35:56] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[16:35:56] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[16:35:56] [Render thread/INFO] (Minecraft) Created: 64x64x0 minecraft:textures/atlas/map_decorations.png-atlas
-[16:35:56] [Render thread/INFO] (Minecraft) Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
-[16:35:56] [Render thread/INFO] (Minecraft) Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
-[16:35:56] [Render thread/INFO] (Minecraft) Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[16:35:56] [Render thread/INFO] (Minecraft) Created: 1024x1024x0 minecraft:textures/atlas/gui.png-atlas
-[16:36:45] [Worker-Main-2/INFO] (PlatformCommandManager) Registering commands with com.sk89q.worldedit.fabric.FabricPlatform
-[16:36:45] [Render thread/INFO] (Minecraft) Loaded 1370 recipes
-[16:36:45] [Render thread/INFO] (Minecraft) Loaded 1481 advancements
-[16:36:45] [Render thread/INFO] (BiomeModificationImpl) Applied 7 biome modifications to 7 of 65 new biomes in 14.28 ms
-[16:36:45] [Server thread/INFO] (Minecraft) Starting integrated minecraft server version 1.21.4
-[16:36:45] [Server thread/INFO] (Minecraft) Generating keypair
-[16:36:46] [Server thread/INFO] (Minecraft) Preparing start region for dimension minecraft:overworld
-[16:36:47] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[16:36:47] [Render thread/INFO] (Minecraft) Preparing spawn area: 0%
-[16:36:47] [Render thread/INFO] (Minecraft) Time elapsed: 852 ms
-[16:36:48] [Server thread/INFO] (Minecraft) Changing view distance to 12, from 10
-[16:36:48] [Server thread/INFO] (Minecraft) Changing simulation distance to 12, from 0
-[16:36:49] [Server thread/INFO] (Minecraft) Player131[local:E:2dd15fc3] logged in with entity id 468 at (84.23909182878306, 66.17675927506424, 95.84887004742679)
-[16:36:49] [Server thread/INFO] (Minecraft) Player131 joined the game
-[16:36:49] [Render thread/INFO] (MinimapLogs) New Xaero hud session initialized!
-[16:36:49] [Server thread/INFO] (Minecraft) Player131 has made the advancement [Diamonds!]
-[16:36:49] [Render thread/INFO] (WorldMap) New world map session initialized!
-[16:36:49] [Render thread/WARN] (REI) [REI] Found 1 existing reload task(s) after trying to terminate them!
-[16:36:49] [REI-ReloadPlugins/INFO] (REI) [REI] %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-[16:36:49] [REI-ReloadPlugins/INFO] (REI) [REI] REICommonPlugin starting main-reload for START.
-[16:36:49] [REI-ReloadPlugins/INFO] (REI) [REI] Plugins (3):
-[16:36:49] [REI-ReloadPlugins/INFO] (REI) [REI]  - (-100.00) DefaultPlugin of DefaultPlugin [roughlyenoughitems]
-[16:36:49] [REI-ReloadPlugins/INFO] (REI) [REI]  - (0.00) FabricFluidAPISupportPlugin
-[16:36:49] [REI-ReloadPlugins/INFO] (REI) [REI]  - (0.00) DefaultRuntimePlugin of DefaultRuntimePlugin [roughlyenoughitems]
-[16:36:49] [REI-ReloadPlugins/INFO] (REI) [REI] %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-[16:36:49] [Render thread/INFO] (Minecraft) [System] [CHAT] Player131 has made the advancement [Diamonds!]
-[16:36:49] [Render thread/INFO] (Minecraft) Loaded 53 advancements
-[16:36:49] [Render thread/INFO] (MinimapLogs) Minimap updated server level id: 379958342 for world ResourceKey[minecraft:dimension / minecraft:overworld]
-[16:36:49] [REI-ReloadPlugins/INFO] (REI) [REI] ----------------------------------------
-[16:36:49] [REI-ReloadPlugins/INFO] (REI) [REI] REIClientPlugin starting main-reload for START.
-[16:36:49] [REI-ReloadPlugins/INFO] (REI) [REI] Plugins (3):
-[16:36:49] [REI-ReloadPlugins/INFO] (REI) [REI]  - (-100.00) DefaultClientPlugin of DefaultClientPlugin [roughlyenoughitems]
-[16:36:49] [REI-ReloadPlugins/INFO] (REI) [REI]  - (0.00) HideIngredientsFromTagsPlugin of HideIngredientsFromTagsPlugin [roughlyenoughitems]
-[16:36:49] [REI-ReloadPlugins/INFO] (REI) [REI]  - (0.00) DefaultClientRuntimePlugin of DefaultClientRuntimePlugin [roughlyenoughitems]
-[16:36:49] [REI-ReloadPlugins/INFO] (REI) [REI] ----------------------------------------
-[16:36:49] [Render thread/INFO] (MinimapLogs) Reloading radar icon resources...
-[16:36:49] [Render thread/INFO] (MinimapLogs) Reloaded radar icon resources!
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI] REICommonPlugin finished post-reload for START in 3.202 ms, totaling 182.7 ms.
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI] REIClientPlugin finished post-reload for START in 1.544 ms, totaling 443.5 ms.
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI] @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI] REICommonPlugin starting main-reload for END.
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI] Plugins (3):
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI]  - (-100.00) DefaultPlugin of DefaultPlugin [roughlyenoughitems]
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI]  - (0.00) FabricFluidAPISupportPlugin
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI]  - (0.00) DefaultRuntimePlugin of DefaultRuntimePlugin [roughlyenoughitems]
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI] @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI] REIClientPlugin starting main-reload for END.
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI] Plugins (3):
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI]  - (-100.00) DefaultClientPlugin of DefaultClientPlugin [roughlyenoughitems]
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI]  - (0.00) HideIngredientsFromTagsPlugin of HideIngredientsFromTagsPlugin [roughlyenoughitems]
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI]  - (0.00) DefaultClientRuntimePlugin of DefaultClientRuntimePlugin [roughlyenoughitems]
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI] REICommonPlugin finished post-reload for END in 646.6 μs, totaling 106.7 ms.
-[16:36:50] [REI-ReloadPlugins/INFO] (REI) [REI] REIClientPlugin finished post-reload for END in 2.210 ms, totaling 640.9 ms.
-[16:36:52] [Render thread/INFO] (REI) [REI] [REI Server Display Sync] Received server's request to set 1550 recipes.
-[16:36:52] [Render thread/WARN] (REI) [REI] Detected runtime DisplayRegistry modification, this can be extremely dangerous!
-[16:36:59] [Server thread/INFO] (Minecraft) Player131 has made the advancement [Not Today, Thank You]
-[16:36:59] [Render thread/INFO] (Minecraft) [System] [CHAT] Player131 has made the advancement [Not Today, Thank You]
-[16:36:59] [Render thread/INFO] (Minecraft) Loaded 55 advancements
-[16:40:50] [Server thread/INFO] (Minecraft) [Player131: Set own game mode to Creative Mode]
-[16:40:50] [Render thread/INFO] (Minecraft) [System] [CHAT] Set own game mode to Creative Mode
-[16:40:53] [Server thread/INFO] (Minecraft) [Player131: Set own game mode to Survival Mode]
-[16:40:53] [Render thread/INFO] (Minecraft) [System] [CHAT] Set own game mode to Survival Mode
-[16:41:31] [Render thread/INFO] (Minecraft) Stopping!
-[16:41:31] [Render thread/INFO] (MinimapLogs) Xaero hud session finalized.
-[16:41:31] [Render thread/INFO] (WorldMap) Finalizing world map session...
-[16:41:31] [Thread-4/INFO] (WorldMap) World map force-cleaned!
-[16:41:31] [Server thread/INFO] (Minecraft) Player131 lost connection: Disconnected
-[16:41:31] [Server thread/INFO] (Minecraft) Player131 left the game
-[16:41:31] [Server thread/INFO] (Minecraft) Stopping singleplayer server as player logged out
-[16:41:31] [Render thread/INFO] (WorldMap) World map session finalized.
-[16:41:31] [Server thread/INFO] (Minecraft) Stopping server
-[16:41:31] [Server thread/INFO] (Minecraft) Saving players
-[16:41:31] [Server thread/INFO] (Minecraft) Saving worlds
-[16:41:31] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[16:41:31] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[16:41:31] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[16:41:31] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (New World): All chunks are saved
-[16:41:31] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[16:41:31] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[16:41:31] [Server thread/INFO] (Minecraft) ThreadedAnvilChunkStorage: All dimensions are saved
+[19:37:53] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/C:/Users/MSI/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.4+mixin.0.8.7/6a12aacc794f1078458433116e9ed42c1cc98096/sponge-mixin-0.15.4+mixin.0.8.7.jar Service=Knot/Fabric Env=CLIENT
+[19:37:53] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
+[19:37:53] [main/INFO] (FabricLoader/Mixin) Compatibility level set to JAVA_21
+[19:37:53] [main/WARN] (FabricLoader/Mixin) Reference map 'aethelon.refmap.json' for aethelon.mixins.json could not be read. If this is a development environment you can ignore this message
+[19:37:55] [main/INFO] (FabricLoader/MixinExtras|Service) Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.4.1).
+[19:37:56] [Datafixer Bootstrap/INFO] (Minecraft) 243 Datafixer optimizations took 293 milliseconds
+[19:38:02] [Render thread/INFO] (Minecraft) Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[19:38:02] [Render thread/INFO] (Minecraft) Setting user: Player768
+[19:38:03] [Render thread/INFO] (PlatformManager) Got request to register class com.sk89q.worldedit.fabric.FabricPlatform with WorldEdit [com.sk89q.worldedit.extension.platform.PlatformManager@335afb46]
+[19:38:03] [Render thread/INFO] (FabricWorldEdit) WorldEdit for Fabric (version 7.3.11+7055-8357a12) is loaded
+[19:38:03] [Render thread/INFO] (aethelon) Initializing Aethelon - Giant Sea Turtles mod...
+[19:38:03] [Render thread/INFO] (aethelon-config) Loaded Aethelon config from file
+[19:38:03] [Render thread/INFO] (aethelon-config) Aethelon config initialized - Water depth: 30, Clearance: 50, Size: 4.0, Rarity: 0.1
+[19:38:03] [Render thread/INFO] (aethelon-config) === AETHELON DEBUG CONFIG DUMP ===
+[19:38:03] [Render thread/INFO] (aethelon-config) SPAWN CONFIG:
+[19:38:03] [Render thread/INFO] (aethelon-config)   water_depth_required: 30 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   clearance_above_required: 50 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   turtle_size_scale: 4.0 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   spawn_rarity: 0.1 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   max_world_population: 3 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   min_distance_between_turtles: 5000 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   spawn_chance_per_chunk: 1.0E-4 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   spawn_height_min: 45 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   spawn_height_max: 62 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config) BIOME SPAWN CONFIG:
+[19:38:03] [Render thread/INFO] (aethelon-config)   oceanSpawnWeight: 5 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   minimumTurtleDistance: 128 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   BEACH_SPAWN_WEIGHT: 15 (Status: HARDCODED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   SNOWY_BEACH_SPAWN_WEIGHT: 10 (Status: HARDCODED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   STONY_SHORE_SPAWN_WEIGHT: 12 (Status: HARDCODED)
+[19:38:03] [Render thread/INFO] (aethelon-config) ENTITY BEHAVIOR CONFIG:
+[19:38:03] [Render thread/INFO] (aethelon-config)   health: 2000.0 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   movement_speed: 0.05 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   normal_movement_speed: 0.45 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   escape_movement_speed: 0.75 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   navigation_speed: 0.75 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   acceleration_factor: 0.3 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   turning_speed: 0.15 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   follow_range: 128.0 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   knockback_resistance: 1.0 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config) AI BEHAVIOR CONFIG:
+[19:38:03] [Render thread/INFO] (aethelon-config)   min_idle_time: 20.0 minutes (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   max_idle_time: 60.0 minutes (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   movement_speed_multiplier: 1.0 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   enable_damage_response: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   pathfinding_range: 500.0 blocks (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config) ISLAND CONFIG:
+[19:38:03] [Render thread/INFO] (aethelon-config)   enable_islands: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   auto_create_islands: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   small_island_chance: 0.5 (Status: NORMALIZED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   medium_island_chance: 0.35 (Status: NORMALIZED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   large_island_chance: 0.15 (Status: NORMALIZED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   preserve_island_entities: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   enable_custom_islands: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   max_island_size: 64 blocks (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   island_y_offset: 2 blocks (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   default_island_structure: 'small_island' (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   movement_blocks_per_tick: 5 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config) DAMAGE & DEATH CONFIG:
+[19:38:03] [Render thread/INFO] (aethelon-config)   enable_enhanced_damage: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   enable_death_explosion: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   explosion_tnt_count: 15 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   explosion_radius: 25.0 blocks (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   explosion_power: 8.0 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   destroy_blocks: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   create_fire: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   explosion_delay_ticks: 60 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   broadcast_death_messages: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   remove_island_on_death: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   agitation_decay_rate: 1 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   enrage_threshold: 75 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config) LOOT SYSTEM CONFIG:
+[19:38:03] [Render thread/INFO] (aethelon-config)   enable_loot_drops: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   show_loot_notifications: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   base_experience_reward: 500 XP (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   loot_quantity_multiplier: 1.0 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   loot_rarity_bonus: 0.0 (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config)   enable_custom_turtle_items: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   enable_island_loot: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   enable_enrage_bonus_loot: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   max_loot_spread_radius: 10 blocks (Status: VALID)
+[19:38:03] [Render thread/INFO] (aethelon-config) DEBUG CONFIG:
+[19:38:03] [Render thread/INFO] (aethelon-config)   enable_debug_logging: true (Status: ACTIVE)
+[19:38:03] [Render thread/INFO] (aethelon-config)   show_state_particles: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config)   enable_spawn_commands: true (Status: ENABLED)
+[19:38:03] [Render thread/INFO] (aethelon-config) === END CONFIG DUMP ===
+[19:38:03] [Render thread/INFO] (aethelon) Registering Aethelon entity types...
+[19:38:03] [Render thread/INFO] (aethelon) Successfully registered 1 entity types
+[19:38:03] [Render thread/INFO] (aethelon) Registering custom items for aethelon
+[19:38:03] [Render thread/INFO] (aethelon) Registered spawn eggs for aethelon
+[19:38:03] [Render thread/INFO] (aethelon) Registering item groups for aethelon
+[19:38:03] [Render thread/INFO] (aethelon) Setting up Aethelon spawn conditions
+[19:38:03] [Render thread/INFO] (aethelon) Beach spawn weights: Beach=15, Snowy Beach=10, Stony Shore=12
+[19:38:03] [Render thread/INFO] (aethelon) Ocean spawn weight: 5
+[19:38:03] [Render thread/INFO] (aethelon) Minimum turtle distance: 128 blocks
+[19:38:03] [Render thread/INFO] (aethelon) Aethelon spawn conditions registered
+[19:38:03] [Render thread/INFO] (aethelon) Registering Aethelon structure components...
+[19:38:03] [Render thread/INFO] (aethelon) Aethelon structure components registered successfully!
+[19:38:03] [Render thread/INFO] (aethelon) Initializing Datapack Structure Manager...
+[19:38:03] [Render thread/INFO] (aethelon) Registered 13 datapack structures
+[19:38:03] [Render thread/INFO] (AethelonCompat) Initializing Aethelon mod compatibility system...
+[19:38:03] [Render thread/INFO] (AethelonCompat) Aethelon compatibility system initialized successfully!
+[19:38:03] [Render thread/INFO] (aethelon) Registered anvil upgrade handler
+[19:38:03] [Render thread/INFO] (aethelon) Aethelon mod initialized successfully!
+[19:38:03] [Render thread/INFO] (REI) [REI] Config loaded
+[19:38:03] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id roughlyenoughitems:request_tags_s2c
+[19:38:03] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id roughlyenoughitems:request_tags_c2s
+[19:38:03] [Render thread/INFO] (REI) [REI] Registered plugin provider DefaultPlugin [roughlyenoughitems] for REICommonPlugin
+[19:38:03] [Render thread/INFO] (REI) [REI] Registered plugin provider DefaultRuntimePlugin [roughlyenoughitems] for REICommonPlugin
+[19:38:03] [Render thread/INFO] (REI) [REI] Registered plugin provider FabricFluidAPISupportPlugin for REICommonPlugin
+[19:38:03] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id roughlyenoughitems:delete_item
+[19:38:03] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id roughlyenoughitems:create_item
+[19:38:03] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id roughlyenoughitems:create_item_grab
+[19:38:03] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id roughlyenoughitems:create_item_hotbar
+[19:38:03] [Render thread/INFO] (NetworkManagerImpl) Registering C2S receiver with id roughlyenoughitems:move_items_new
+[19:38:03] [Render thread/INFO] (Indigo) [Indigo] Registering Indigo renderer!
+[19:38:03] [Render thread/INFO] (WorldMap) Loading Xaero's World Map - Stage 1/2
+[19:38:05] [Render thread/INFO] (aethelon) Initializing Aethelon client-side features...
+[19:38:05] [Render thread/INFO] (aethelon) Aethelon client initialization successful!
+[19:38:05] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id architectury:spawn_entity_packet
+[19:38:05] [Render thread/INFO] (XaeroMinimap) Loading Xaero's Minimap - Stage 1/2
+[19:38:06] [Render thread/INFO] (REI) [REI] Registered plugin provider DefaultClientPlugin [roughlyenoughitems] for REIClientPlugin
+[19:38:06] [Render thread/INFO] (REI) [REI] Registered plugin provider DefaultClientRuntimePlugin [roughlyenoughitems] for REIClientPlugin
+[19:38:06] [Render thread/INFO] (REI) [REI] Registered plugin provider HideIngredientsFromTagsPlugin [roughlyenoughitems] for REIClientPlugin
+[19:38:06] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id roughlyenoughitems:ci_msg
+[19:38:06] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id roughlyenoughitems:og_not_enough
+[19:38:06] [Render thread/INFO] (NetworkManagerImpl) Registering S2C receiver with id roughlyenoughitems:sync_displays
+[19:38:06] [Render thread/INFO] (Minecraft) Backend library: LWJGL version 3.3.3-snapshot
+[19:38:08] [Render thread/INFO] (Minecraft) Reloading ResourceManager: vanilla, fabric, aethelon, cloth-config, fabric-api, fabric-api-base, fabric-api-lookup-api-v1, fabric-biome-api-v1, fabric-block-api-v1, fabric-block-view-api-v2, fabric-blockrenderlayer-v1, fabric-client-gametest-api-v1, fabric-client-tags-api-v1, fabric-command-api-v1, fabric-command-api-v2, fabric-commands-v0, fabric-content-registries-v0, fabric-convention-tags-v1, fabric-convention-tags-v2, fabric-crash-report-info-v1, fabric-data-attachment-api-v1, fabric-data-generation-api-v1, fabric-dimensions-v1, fabric-entity-events-v1, fabric-events-interaction-v0, fabric-game-rule-api-v1, fabric-gametest-api-v1, fabric-item-api-v1, fabric-item-group-api-v1, fabric-key-binding-api-v1, fabric-keybindings-v0, fabric-lifecycle-events-v1, fabric-loot-api-v2, fabric-loot-api-v3, fabric-message-api-v1, fabric-model-loading-api-v1, fabric-networking-api-v1, fabric-object-builder-api-v1, fabric-particles-v1, fabric-recipe-api-v1, fabric-registry-sync-v0, fabric-renderer-api-v1, fabric-renderer-indigo, fabric-rendering-data-attachment-v1, fabric-rendering-fluids-v1, fabric-rendering-v1, fabric-resource-conditions-api-v1, fabric-resource-loader-v0, fabric-screen-api-v1, fabric-screen-handler-api-v1, fabric-sound-api-v1, fabric-tag-api-v1, fabric-transfer-api-v1, fabric-transitive-access-wideners-v1, fabricloader, roughlyenoughitems, worldedit, xaerominimap, xaeroworldmap
+[19:38:08] [Worker-Main-8/INFO] (Minecraft) Found unifont_jp_patch-16.0.01.hex, loading
+[19:38:08] [Worker-Main-11/INFO] (Minecraft) Found unifont_all_no_pua-16.0.01.hex, loading
+[19:38:08] [Render thread/INFO] (WorldMap) Loading Xaero's World Map - Stage 2/2
+[19:38:08] [Render thread/INFO] (WorldMap) New world map region cache hash code: -1580040234
+[19:38:08] [Render thread/INFO] (WorldMap) Registered player tracker system: map_synced
+[19:38:08] [Render thread/INFO] (WorldMap) Xaero's WorldMap Mod: Xaero's minimap found!
+[19:38:08] [Render thread/INFO] (WorldMap) Registered player tracker system: minimap_synced
+[19:38:08] [Render thread/INFO] (WorldMap) No Optifine!
+[19:38:08] [Render thread/INFO] (WorldMap) Xaero's World Map: No Vivecraft!
+[19:38:08] [Render thread/INFO] (XaeroMinimap) Loading Xaero's Minimap - Stage 2/2
+[19:38:09] [Render thread/INFO] (MinimapLogs) Registered player tracker system: minimap_synced
+[19:38:09] [Render thread/INFO] (MinimapLogs) Xaero's Minimap: World Map found!
+[19:38:09] [Render thread/INFO] (MinimapLogs) No Optifine!
+[19:38:09] [Render thread/INFO] (MinimapLogs) Xaero's Minimap: No Vivecraft!
+[19:38:10] [Render thread/INFO] (Minecraft) OpenAL initialized on device OpenAL Soft on Speakers (Realtek(R) Audio)
+[19:38:10] [Render thread/INFO] (Minecraft) Sound engine started
+[19:38:10] [Render thread/INFO] (Minecraft) Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[19:38:10] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[19:38:10] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[19:38:10] [Render thread/INFO] (Minecraft) Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[19:38:10] [Render thread/INFO] (Minecraft) Created: 2048x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[19:38:11] [Render thread/INFO] (Minecraft) Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[19:38:11] [Render thread/INFO] (Minecraft) Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[19:38:11] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[19:38:11] [Render thread/INFO] (Minecraft) Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[19:38:11] [Render thread/INFO] (Minecraft) Created: 64x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[19:38:11] [Render thread/INFO] (Minecraft) Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[19:38:11] [Render thread/INFO] (Minecraft) Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+[19:38:11] [Render thread/INFO] (Minecraft) Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[19:38:11] [Render thread/INFO] (Minecraft) Created: 1024x1024x0 minecraft:textures/atlas/gui.png-atlas
+[19:38:23] [Render thread/INFO] (Minecraft) Stopping!

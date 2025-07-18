@@ -5,6 +5,12 @@
       "isCollidable": "Lnet/minecraft/class_1297;method_30948()Z",
       "tick": "Lnet/minecraft/class_1297;method_5773()V"
     },
+    "com/bvhfve/aethelon/mixin/AncientTridentAccuracyMixin": {
+      "setVelocity(Lnet/minecraft/entity/Entity;FFFFF)V": "Lnet/minecraft/class_1676;method_24919(Lnet/minecraft/class_1297;FFFFF)V"
+    },
+    "com/bvhfve/aethelon/mixin/AncientTridentGravityMixin": {
+      "tick": "Lnet/minecraft/class_1685;method_5773()V"
+    },
     "com/bvhfve/aethelon/mixin/ChunkGeneratorMixin": {
       "generateFeatures": "Lnet/minecraft/class_2794;method_12102(Lnet/minecraft/class_5281;Lnet/minecraft/class_2791;Lnet/minecraft/class_5138;)V"
     },
@@ -15,6 +21,9 @@
     "com/bvhfve/aethelon/mixin/FishingBobberEntityMixin": {
       "use": "Lnet/minecraft/class_1536;method_6957(Lnet/minecraft/class_1799;)I"
     },
+    "com/bvhfve/aethelon/mixin/ItemStackUpgradeMixin": {
+      "getTooltip": "Lnet/minecraft/class_1799;method_7950(Lnet/minecraft/class_1792$class_9635;Lnet/minecraft/class_1657;Lnet/minecraft/class_1836;)Ljava/util/List;"
+    },
     "com/bvhfve/aethelon/mixin/LivingEntityMixin": {
       "damage": "Lnet/minecraft/class_1309;method_64397(Lnet/minecraft/class_3218;Lnet/minecraft/class_1282;F)Z"
     },
@@ -23,6 +32,10 @@
     },
     "com/bvhfve/aethelon/mixin/TurtleShellShieldMixin": {
       "damageShield": "Lnet/minecraft/class_1657;method_6056(F)V"
+    },
+    "com/bvhfve/aethelon/mixin/WeaponUpgradeMixin": {
+      "damage": "Lnet/minecraft/class_1309;method_64397(Lnet/minecraft/class_3218;Lnet/minecraft/class_1282;F)Z",
+      "onAttacking": "Lnet/minecraft/class_1309;method_6114(Lnet/minecraft/class_1297;)V"
     }
   },
   "data": {
@@ -31,6 +44,12 @@
         "collidesWith": "Lnet/minecraft/class_1297;method_30949(Lnet/minecraft/class_1297;)Z",
         "isCollidable": "Lnet/minecraft/class_1297;method_30948()Z",
         "tick": "Lnet/minecraft/class_1297;method_5773()V"
+      },
+      "com/bvhfve/aethelon/mixin/AncientTridentAccuracyMixin": {
+        "setVelocity(Lnet/minecraft/entity/Entity;FFFFF)V": "Lnet/minecraft/class_1676;method_24919(Lnet/minecraft/class_1297;FFFFF)V"
+      },
+      "com/bvhfve/aethelon/mixin/AncientTridentGravityMixin": {
+        "tick": "Lnet/minecraft/class_1685;method_5773()V"
       },
       "com/bvhfve/aethelon/mixin/ChunkGeneratorMixin": {
         "generateFeatures": "Lnet/minecraft/class_2794;method_12102(Lnet/minecraft/class_5281;Lnet/minecraft/class_2791;Lnet/minecraft/class_5138;)V"
@@ -42,6 +61,9 @@
       "com/bvhfve/aethelon/mixin/FishingBobberEntityMixin": {
         "use": "Lnet/minecraft/class_1536;method_6957(Lnet/minecraft/class_1799;)I"
       },
+      "com/bvhfve/aethelon/mixin/ItemStackUpgradeMixin": {
+        "getTooltip": "Lnet/minecraft/class_1799;method_7950(Lnet/minecraft/class_1792$class_9635;Lnet/minecraft/class_1657;Lnet/minecraft/class_1836;)Ljava/util/List;"
+      },
       "com/bvhfve/aethelon/mixin/LivingEntityMixin": {
         "damage": "Lnet/minecraft/class_1309;method_64397(Lnet/minecraft/class_3218;Lnet/minecraft/class_1282;F)Z"
       },
@@ -50,6 +72,10 @@
       },
       "com/bvhfve/aethelon/mixin/TurtleShellShieldMixin": {
         "damageShield": "Lnet/minecraft/class_1657;method_6056(F)V"
+      },
+      "com/bvhfve/aethelon/mixin/WeaponUpgradeMixin": {
+        "damage": "Lnet/minecraft/class_1309;method_64397(Lnet/minecraft/class_3218;Lnet/minecraft/class_1282;F)Z",
+        "onAttacking": "Lnet/minecraft/class_1309;method_6114(Lnet/minecraft/class_1297;)V"
       }
     }
   }

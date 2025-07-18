@@ -6,12 +6,15 @@
   "refmap": "aethelon.refmap.json",
   "mixins": [
     "AethelonEntityCollisionMixin",
+    "AncientTridentAccuracyMixin",
+    "AncientTridentGravityMixin",
     "EntityMixin",
     "FishingBobberEntityMixin",
     "LivingEntityMixin",
     "StructureTemplateMixin",
     "ChunkGeneratorMixin",
-    "TurtleShellShieldMixin"
+    "TurtleShellShieldMixin",
+    "WeaponUpgradeMixin"
   ],
   "client": [
   ],

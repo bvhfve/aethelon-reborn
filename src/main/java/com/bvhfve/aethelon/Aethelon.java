@@ -8,6 +8,7 @@ import com.bvhfve.aethelon.registry.ModItemGroups;
 import com.bvhfve.aethelon.items.ModItems;
 import com.bvhfve.aethelon.structure.StructureRegistry;
 import com.bvhfve.aethelon.structure.DatapackStructureManager;
+import com.bvhfve.aethelon.upgrade.AnvilUpgradeHandler;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,6 +44,9 @@ public class Aethelon implements ModInitializer {
             
             // Initialize mod compatibility system
             ModCompatibility.initialize();
+            
+            // Initialize weapon upgrade system
+            AnvilUpgradeHandler.register();
             
             LOGGER.info("Aethelon mod initialized successfully!");
             
