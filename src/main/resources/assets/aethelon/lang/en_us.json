@@ -37,21 +37,7 @@
   "advancement.aethelon.craft_turtle_armor.title": "Shell Protection",
   "advancement.aethelon.craft_turtle_armor.description": "Craft a piece of turtle shell armor",
   "advancement.aethelon.full_turtle_set.title": "Ancient Guardian",
-  "advancement.aethelon.full_turtle_set.description": "Wear a complete set of turtle shell armor"
-  "item.aethelon.turtle_shell_boots": "Ancient Turtle Shell Boots",
-  "item.aethelon.ancient_trident": "Ancient Turtle Trident",
-  "item.aethelon.turtle_shell_shield": "Turtle Shell Shield",
-  "item.aethelon.aquatic_boots": "Aquatic Boots",
-  "item.aethelon.turtle_scale_block": "Turtle Scale Block",
-  
-  "tooltip.aethelon.turtle_shell_helmet": "Provides water breathing and aquatic protection",
-  "tooltip.aethelon.turtle_shell_chestplate": "Ancient armor with enhanced durability",
-  "tooltip.aethelon.turtle_shell_leggings": "Sturdy protection from ancient materials",
-  "tooltip.aethelon.turtle_shell_boots": "Boots crafted from ancient turtle shell",
-  "tooltip.aethelon.ancient_trident": "Enhanced trident with aquatic abilities",
-  "tooltip.aethelon.turtle_shell_shield": "Durable shield made from turtle shell",
-  "tooltip.aethelon.aquatic_boots": "Enhanced underwater movement",
-  "tooltip.aethelon.turtle_scale_block": "Decorative block made from turtle scales",
+  "advancement.aethelon.full_turtle_set.description": "Wear a complete set of turtle shell armor",
   
   "aethelon.config.title": "Aethelon Configuration",
   "aethelon.config.spawn": "Spawn Settings",

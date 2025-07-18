@@ -48,9 +48,26 @@ public class IslandManager {
     
     // Island type variants
     public enum IslandType {
+        // Small islands
         SMALL("small_island", 16, 8, 16),
+        SMALL_TROPICAL("small_tropical_island", 16, 8, 16),
+        SMALL_ROCKY("small_rocky_island", 16, 10, 16),
+        SMALL_CORAL("small_coral_island", 16, 6, 16),
+        
+        // Medium islands
         MEDIUM("medium_island", 24, 12, 24),
-        LARGE("large_island", 32, 16, 32);
+        MEDIUM_FOREST("medium_forest_island", 24, 14, 24),
+        MEDIUM_DESERT("medium_desert_island", 24, 10, 24),
+        MEDIUM_VILLAGE("medium_village_island", 24, 16, 24),
+        
+        // Large islands
+        LARGE("large_island", 32, 16, 32),
+        LARGE_VILLAGE("large_village_island", 32, 20, 32),
+        
+        // Special islands
+        BOSS("boss_island", 40, 24, 40),
+        TREASURE("treasure_island", 28, 18, 28),
+        MYSTICAL("mystical_island", 36, 22, 36);
         
         public final String structureName;
         public final int width, height, length;
@@ -60,6 +77,75 @@ public class IslandManager {
             this.width = width;
             this.height = height;
             this.length = length;
+        }
+        
+        /**
+         * Get the size category of this island type
+         */
+        public String getSizeCategory() {
+            if (name().startsWith("SMALL")) return "small";
+            if (name().startsWith("MEDIUM")) return "medium";
+            if (name().startsWith("LARGE")) return "large";
+            return "special";
+        }
+        
+        /**
+         * Check if this is a special island type
+         */
+        public boolean isSpecial() {
+            return getSizeCategory().equals("special");
+        }
+        
+        /**
+         * Check if this island type has villages
+         */
+        public boolean hasVillage() {
+            return name().contains("VILLAGE");
+        }
+        
+        /**
+         * Get all island types of a specific size category
+         */
+        public static IslandType[] getByCategory(String category) {
+            return Arrays.stream(values())
+                    .filter(type -> type.getSizeCategory().equals(category))
+                    .toArray(IslandType[]::new);
+        }
+        
+        /**
+         * Get a random island type from a specific category
+         */
+        public static IslandType getRandomFromCategory(String category, net.minecraft.util.math.random.Random random) {
+            IslandType[] types = getByCategory(category);
+            return types.length > 0 ? types[random.nextInt(types.length)] : SMALL;
+        }
+        
+        /**
+         * Get all small island types
+         */
+        public static IslandType[] getSmallIslands() {
+            return getByCategory("small");
+        }
+        
+        /**
+         * Get all medium island types
+         */
+        public static IslandType[] getMediumIslands() {
+            return getByCategory("medium");
+        }
+        
+        /**
+         * Get all large island types
+         */
+        public static IslandType[] getLargeIslands() {
+            return getByCategory("large");
+        }
+        
+        /**
+         * Get all special island types
+         */
+        public static IslandType[] getSpecialIslands() {
+            return getByCategory("special");
         }
     }
     
@@ -143,6 +229,49 @@ public class IslandManager {
             LOGGER.error("Failed to load island structure: {}", type.structureName, e);
             return createDefaultIsland(world, type);
         }
+    }
+    
+    /**
+     * Attempt to load a special island structure with enhanced spawning logic
+     * This method is called when the turtle should potentially get a special island
+     */
+    public boolean tryLoadSpecialIsland(World world) {
+        if (world.isClient || !(world instanceof ServerWorld serverWorld)) {
+            return false;
+        }
+        
+        // Try to spawn a special island using the special spawning system
+        if (SpecialIslandSpawner.trySpawnSpecialIsland(turtle, serverWorld)) {
+            LOGGER.info("Special island spawned on turtle at {}", turtle.getPos());
+            return true;
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Load a random island structure based on biome and conditions
+     */
+    public boolean loadRandomIslandStructure(World world, String sizeCategory) {
+        if (world.isClient || !(world instanceof ServerWorld serverWorld)) {
+            return false;
+        }
+        
+        // First, try to spawn a special island if conditions are right
+        if (tryLoadSpecialIsland(world)) {
+            return true;
+        }
+        
+        // Otherwise, spawn a regular island
+        IslandType[] availableTypes = IslandType.getByCategory(sizeCategory);
+        if (availableTypes.length == 0) {
+            LOGGER.warn("No island types available for category: {}", sizeCategory);
+            return loadIslandStructure(world, IslandType.SMALL);
+        }
+        
+        // Select random island type from category
+        IslandType selectedType = availableTypes[world.getRandom().nextInt(availableTypes.length)];
+        return loadIslandStructure(world, selectedType);
     }
     
     /**

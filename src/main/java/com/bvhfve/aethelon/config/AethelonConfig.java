@@ -105,10 +105,22 @@ public class AethelonConfig {
     public boolean create_fire = false;
     public int explosion_delay_ticks = 60; // 3 seconds after death
     
+    // Special Island Configuration
+    public boolean enable_special_islands = true;
+    public double special_island_spawn_multiplier = 1.0; // Multiplier for special island spawn chances
+    public int min_distance_from_spawn_for_special = 5000; // Minimum distance from world spawn
+    public int min_distance_between_special_islands = 2000; // Minimum distance between special islands
+    public int max_boss_islands_per_world = 3;
+    public int max_treasure_islands_per_world = 8;
+    public int max_mystical_islands_per_world = 5;
+    public int min_playtime_hours_for_boss_islands = 10;
+    public int min_playtime_hours_for_mystical_islands = 15;
+    
     // Debug Configuration
     public boolean enable_debug_logging = false;
     public boolean debug_chunk_generation = false; // Log config status during chunk generation
     public boolean debug_spawn_attempts = false;   // Log detailed spawn attempt information
+    public boolean debug_special_island_spawning = false; // Log special island spawn attempts
     public boolean show_state_particles = false;
     public boolean enable_spawn_commands = true;
     

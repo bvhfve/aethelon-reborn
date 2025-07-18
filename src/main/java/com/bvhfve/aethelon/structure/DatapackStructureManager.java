@@ -79,10 +79,10 @@ public class DatapackStructureManager {
     public static void initialize() {
         Aethelon.LOGGER.info("Initializing Datapack Structure Manager...");
         
-        // Register default island structures that will be provided via datapacks
+        // Register small island structures
         registerStructure(new IslandStructureDefinition(
             "small_island",
-            Identifier.of(Aethelon.MOD_ID, "small_island"),
+            Identifier.of(Aethelon.MOD_ID, "islands/small/small_island"),
             new Vec3d(16, 8, 16),
             100,
             Set.of("ocean", "deep_ocean", "warm_ocean", "lukewarm_ocean", "cold_ocean"),
@@ -90,8 +90,36 @@ public class DatapackStructureManager {
         ));
         
         registerStructure(new IslandStructureDefinition(
+            "small_tropical_island",
+            Identifier.of(Aethelon.MOD_ID, "islands/small/small_tropical_island"),
+            new Vec3d(16, 8, 16),
+            80,
+            Set.of("warm_ocean", "lukewarm_ocean"),
+            true, true
+        ));
+        
+        registerStructure(new IslandStructureDefinition(
+            "small_rocky_island",
+            Identifier.of(Aethelon.MOD_ID, "islands/small/small_rocky_island"),
+            new Vec3d(16, 10, 16),
+            70,
+            Set.of("ocean", "deep_ocean", "cold_ocean"),
+            true, true
+        ));
+        
+        registerStructure(new IslandStructureDefinition(
+            "small_coral_island",
+            Identifier.of(Aethelon.MOD_ID, "islands/small/small_coral_island"),
+            new Vec3d(16, 6, 16),
+            60,
+            Set.of("warm_ocean"),
+            true, true
+        ));
+        
+        // Register medium island structures
+        registerStructure(new IslandStructureDefinition(
             "medium_island",
-            Identifier.of(Aethelon.MOD_ID, "medium_island"),
+            Identifier.of(Aethelon.MOD_ID, "islands/medium/medium_island"),
             new Vec3d(24, 12, 24),
             60,
             Set.of("ocean", "deep_ocean", "warm_ocean", "lukewarm_ocean", "cold_ocean"),
@@ -99,8 +127,36 @@ public class DatapackStructureManager {
         ));
         
         registerStructure(new IslandStructureDefinition(
+            "medium_forest_island",
+            Identifier.of(Aethelon.MOD_ID, "islands/medium/medium_forest_island"),
+            new Vec3d(24, 14, 24),
+            50,
+            Set.of("ocean", "deep_ocean", "lukewarm_ocean"),
+            true, true
+        ));
+        
+        registerStructure(new IslandStructureDefinition(
+            "medium_desert_island",
+            Identifier.of(Aethelon.MOD_ID, "islands/medium/medium_desert_island"),
+            new Vec3d(24, 10, 24),
+            40,
+            Set.of("warm_ocean"),
+            true, true
+        ));
+        
+        registerStructure(new IslandStructureDefinition(
+            "medium_village_island",
+            Identifier.of(Aethelon.MOD_ID, "islands/medium/medium_village_island"),
+            new Vec3d(24, 16, 24),
+            20,
+            Set.of("ocean", "deep_ocean", "warm_ocean", "lukewarm_ocean"),
+            false, false
+        ));
+        
+        // Register large island structures
+        registerStructure(new IslandStructureDefinition(
             "large_island",
-            Identifier.of(Aethelon.MOD_ID, "large_island"),
+            Identifier.of(Aethelon.MOD_ID, "islands/large/large_island"),
             new Vec3d(32, 16, 32),
             30,
             Set.of("ocean", "deep_ocean"),
@@ -108,11 +164,39 @@ public class DatapackStructureManager {
         ));
         
         registerStructure(new IslandStructureDefinition(
-            "village_island",
-            Identifier.of(Aethelon.MOD_ID, "village_island"),
+            "large_village_island",
+            Identifier.of(Aethelon.MOD_ID, "islands/large/large_village_island"),
             new Vec3d(32, 20, 32),
             10,
             Set.of("ocean", "deep_ocean", "warm_ocean", "lukewarm_ocean"),
+            false, false
+        ));
+        
+        // Register special island structures
+        registerStructure(new IslandStructureDefinition(
+            "boss_island",
+            Identifier.of(Aethelon.MOD_ID, "special/boss_island"),
+            new Vec3d(40, 24, 40),
+            5,
+            Set.of("deep_ocean"),
+            false, false
+        ));
+        
+        registerStructure(new IslandStructureDefinition(
+            "treasure_island",
+            Identifier.of(Aethelon.MOD_ID, "special/treasure_island"),
+            new Vec3d(28, 18, 28),
+            8,
+            Set.of("ocean", "deep_ocean", "warm_ocean"),
+            true, false
+        ));
+        
+        registerStructure(new IslandStructureDefinition(
+            "mystical_island",
+            Identifier.of(Aethelon.MOD_ID, "special/mystical_island"),
+            new Vec3d(36, 22, 36),
+            3,
+            Set.of("deep_ocean"),
             false, false
         ));
         

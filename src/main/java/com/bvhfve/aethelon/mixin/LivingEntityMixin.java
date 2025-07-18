@@ -20,7 +20,7 @@ public class LivingEntityMixin {
      * Reduce damage from Alex's Mobs when wearing turtle shell armor
      */
     @ModifyVariable(method = "damage", at = @At("HEAD"), argsOnly = true)
-    private float reduceDamageFromAlexsMobs(float amount, DamageSource source) {
+    private float reduceDamageFromAlexsMobs(float amount, net.minecraft.server.world.ServerWorld world, DamageSource source, float originalAmount) {
         try {
             // Only apply to players
             if (!((Object) this instanceof PlayerEntity)) {

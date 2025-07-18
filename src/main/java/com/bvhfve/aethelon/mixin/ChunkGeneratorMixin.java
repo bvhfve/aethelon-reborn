@@ -2,9 +2,10 @@ package com.bvhfve.aethelon.mixin;
 
 import com.bvhfve.aethelon.config.ConfigDebugLogger;
 import net.minecraft.util.math.ChunkPos;
-import net.minecraft.world.ChunkRegion;
+import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
+import net.minecraft.world.gen.StructureAccessor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -21,10 +22,10 @@ public class ChunkGeneratorMixin {
      * Inject debug logging when chunks are being generated
      */
     @Inject(method = "generateFeatures", at = @At("HEAD"))
-    private void onGenerateFeatures(ChunkRegion world, Chunk chunk, CallbackInfo ci) {
+    private void onGenerateFeatures(net.minecraft.world.StructureWorldAccess world, Chunk chunk, net.minecraft.world.gen.StructureAccessor structureAccessor, CallbackInfo ci) {
         try {
             ChunkPos chunkPos = chunk.getPos();
-            // Use ChunkRegion directly - it extends World
+            // Use StructureWorldAccess - it extends WorldAccess
             ConfigDebugLogger.logChunkGenerationConfig(world, chunkPos);
         } catch (Exception e) {
             // Silently ignore errors to avoid breaking chunk generation
