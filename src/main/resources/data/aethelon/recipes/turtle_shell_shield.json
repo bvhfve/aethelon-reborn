@@ -6,11 +6,18 @@
     " S "
   ],
   "key": {
-    "S": "aethelon:turtle_shell_fragment".
-    "P": "aethelon:deep_sea_pearl"
+    "S": {
+      "item": "aethelon:turtle_shell_fragment"
+    },
+    "P": {
+      "item": "aethelon:deep_sea_pearl"
+    }
   },
   "result": {
-    "item": "aethelon:turtle_shell_shield",
+    "id": "aethelon:turtle_shell_shield",
     "count": 1
   }
 }
+
+
+
