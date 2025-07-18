@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SPS",
+    "PCP",
+    "SPS"
+  ],
+  "key": {
+    "S": {
+      "item": "aethelon:ancient_turtle_scale"
+    },
+    "P": {
+      "item": "aethelon:deep_sea_pearl"
+    },
+    "C": {
+      "item": "minecraft:compass"
+    }
+  },
+  "result": {
+    "item": "aethelon:ancient_compass",
+    "count": 1
+  }
+}

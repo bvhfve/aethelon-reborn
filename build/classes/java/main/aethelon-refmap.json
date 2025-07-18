@@ -1,0 +1,56 @@
+{
+  "mappings": {
+    "com/bvhfve/aethelon/mixin/AethelonEntityCollisionMixin": {
+      "collidesWith": "Lnet/minecraft/class_1297;method_30949(Lnet/minecraft/class_1297;)Z",
+      "isCollidable": "Lnet/minecraft/class_1297;method_30948()Z",
+      "tick": "Lnet/minecraft/class_1297;method_5773()V"
+    },
+    "com/bvhfve/aethelon/mixin/ChunkGeneratorMixin": {
+      "generateFeatures": "Lnet/minecraft/class_2794;method_12102(Lnet/minecraft/class_5281;Lnet/minecraft/class_2791;Lnet/minecraft/class_5138;)V"
+    },
+    "com/bvhfve/aethelon/mixin/EntityMixin": {
+      "checkBlockCollision": "Lnet/minecraft/class_1297;method_65037(Ljava/util/List;Ljava/util/Set;)V",
+      "updateVelocity": "Lnet/minecraft/class_1297;method_5724(FLnet/minecraft/class_243;)V"
+    },
+    "com/bvhfve/aethelon/mixin/FishingBobberEntityMixin": {
+      "use": "Lnet/minecraft/class_1536;method_6957(Lnet/minecraft/class_1799;)I"
+    },
+    "com/bvhfve/aethelon/mixin/LivingEntityMixin": {
+      "damage": "Lnet/minecraft/class_1309;method_64397(Lnet/minecraft/class_3218;Lnet/minecraft/class_1282;F)Z"
+    },
+    "com/bvhfve/aethelon/mixin/StructureTemplateMixin": {
+      "place": "Lnet/minecraft/class_3499;method_15172(Lnet/minecraft/class_5425;Lnet/minecraft/class_2338;Lnet/minecraft/class_2338;Lnet/minecraft/class_3492;Lnet/minecraft/class_5819;I)Z"
+    },
+    "com/bvhfve/aethelon/mixin/TurtleShellShieldMixin": {
+      "damageShield": "Lnet/minecraft/class_1657;method_6056(F)V"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "com/bvhfve/aethelon/mixin/AethelonEntityCollisionMixin": {
+        "collidesWith": "Lnet/minecraft/class_1297;method_30949(Lnet/minecraft/class_1297;)Z",
+        "isCollidable": "Lnet/minecraft/class_1297;method_30948()Z",
+        "tick": "Lnet/minecraft/class_1297;method_5773()V"
+      },
+      "com/bvhfve/aethelon/mixin/ChunkGeneratorMixin": {
+        "generateFeatures": "Lnet/minecraft/class_2794;method_12102(Lnet/minecraft/class_5281;Lnet/minecraft/class_2791;Lnet/minecraft/class_5138;)V"
+      },
+      "com/bvhfve/aethelon/mixin/EntityMixin": {
+        "checkBlockCollision": "Lnet/minecraft/class_1297;method_65037(Ljava/util/List;Ljava/util/Set;)V",
+        "updateVelocity": "Lnet/minecraft/class_1297;method_5724(FLnet/minecraft/class_243;)V"
+      },
+      "com/bvhfve/aethelon/mixin/FishingBobberEntityMixin": {
+        "use": "Lnet/minecraft/class_1536;method_6957(Lnet/minecraft/class_1799;)I"
+      },
+      "com/bvhfve/aethelon/mixin/LivingEntityMixin": {
+        "damage": "Lnet/minecraft/class_1309;method_64397(Lnet/minecraft/class_3218;Lnet/minecraft/class_1282;F)Z"
+      },
+      "com/bvhfve/aethelon/mixin/StructureTemplateMixin": {
+        "place": "Lnet/minecraft/class_3499;method_15172(Lnet/minecraft/class_5425;Lnet/minecraft/class_2338;Lnet/minecraft/class_2338;Lnet/minecraft/class_3492;Lnet/minecraft/class_5819;I)Z"
+      },
+      "com/bvhfve/aethelon/mixin/TurtleShellShieldMixin": {
+        "damageShield": "Lnet/minecraft/class_1657;method_6056(F)V"
+      }
+    }
+  }
+}

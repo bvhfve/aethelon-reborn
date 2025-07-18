@@ -1,0 +1,44 @@
+/summon aethelon:aethelon
+/data get entity
+/data get entity 5d764e73-fc75-46e9-aa7e-268b93d4d90d
+/kill @e[type=!minecraft:player[]
+/kill @e[type=!minecraft:player]
+/setblock ~ ~ ~
+/setblock ~ ~ ~ stone
+/summon minecraft:acacia_boat
+/summon minecraft:falling_block
+/
+/summon minecraft:falling_block
+/kill @e[type=!player]
+/summon aethelon:aethelon
+/kill @e[type=!player]
+/attribute db0cd92b-e3cb-4244-908b-bb7f02950943 minecraft:scale base set 1
+/summon minecraft:falling_block
+/kill @e[type=!player]
+/tick freeze
+/summon aethelon:aethelon
+/kill @e[type=!player]
+/time set day
+/gamerule doDaylightCycle false
+/tick freeze
+/data get entity 2c11fee3-3e32-45c4-b74d-31f6e440c76d
+/kill @e[type=!player]
+/summon aethelon:aethelon
+/summon minecraft:acacia_boat
+/tick sprint 60s
+/tick sprint 1d
+/kill @e[type=!player]
+/summon aethelon:aethelon
+/tick sprint 60s
+/tick sprint 1d
+/give @p aethelon:ancient_trident
+/tick sprint 60s
+/kill @e[type=aethelon:aethelon]
+/give @p aethelon:turtle_shell_fragment 6
+/give @p aethelon:deep_sea_pearl 1
+/effect give Player446 minecraft:regeneration infinite 255
+/spawnpoint
+/gamerule keepInventory true
+/gamerule maxEntityCramming 69420
+/give @p minecraft:shield
+/give @p aethelon:ancient_trident

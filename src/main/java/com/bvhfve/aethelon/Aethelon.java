@@ -30,9 +30,10 @@ public class Aethelon implements ModInitializer {
             // Initialize configuration
             AethelonConfig.initialize();
             
-            // Register mod content
-            ModItems.registerModItems();
+            // Register mod content (entities must be registered before items that reference them)
             ModEntityTypes.initialize();
+            ModItems.registerModItems();
+            ModItems.registerSpawnEggs(); // Register spawn eggs after entity types
             ModItemGroups.registerItemGroups();
             ModBiomeModifications.registerSpawnConditions();
             

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "DDD",
+    "DHD",
+    "DDD"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:dirt"
+    },
+    "H": {
+      "item": "aethelon:turtle_heart"
+    }
+  },
+  "result": {
+    "item": "aethelon:island_essence",
+    "count": 2
+  }
+}

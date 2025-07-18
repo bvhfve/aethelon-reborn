@@ -2,6 +2,17 @@ plugins {
 	id 'fabric-loom' version '1.10-SNAPSHOT'
 }
 
+loom {
+	splitEnvironmentSourceSets()
+	
+	mods {
+		aethelon {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+}
+
 version = project.mod_version
 group = project.maven_group
 
@@ -15,7 +26,7 @@ repositories {
 dependencies {
     minecraft("com.mojang:minecraft:1.21.4")
     mappings("net.fabricmc:yarn:1.21.4+build.8") // Dùng Yarn mappings thay vì Mojang mappings
-    modImplementation("net.fabricmc:fabric-loader:0.16.5") // Cập nhật phiên bản Fabric Loader
+    modImplementation("net.fabricmc:fabric-loader:0.16.9") // Cập nhật phiên bản Fabric Loader
     modImplementation("net.fabricmc.fabric-api:fabric-api:0.119.2+1.21.4")
 	// Config - using simple in-memory configuration
 	// Add Mod Menu dependency (optional)

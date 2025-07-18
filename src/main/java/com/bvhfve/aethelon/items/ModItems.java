@@ -48,8 +48,8 @@ public class ModItems {
     // Building blocks
     public static final Item TURTLE_SCALE_BLOCK;
     
-    // Spawn eggs
-    public static final Item AETHELON_SPAWN_EGG;
+    // Spawn eggs (registered separately after entity types)
+    public static Item AETHELON_SPAWN_EGG;
     
     // Initialize items using FabricWaystone pattern with registryKey()
     static {
@@ -90,16 +90,13 @@ public class ModItems {
                 new AncientTridentItem(new Item.Settings().rarity(Rarity.EPIC).maxDamage(350).attributeModifiers(TridentItem.createAttributeModifiers()).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "ancient_trident")))));
         
         TURTLE_SHELL_SHIELD = registerItem("turtle_shell_shield",
-                new Item(new Item.Settings().rarity(Rarity.UNCOMMON).maxDamage(500).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "turtle_shell_shield")))));
+                new TurtleShellShieldItem(new Item.Settings().rarity(Rarity.UNCOMMON).maxDamage(1008).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "turtle_shell_shield")))));
         
         AQUATIC_BOOTS = registerItem("aquatic_boots",
                 new Item(new Item.Settings().rarity(Rarity.UNCOMMON).maxDamage(200).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "aquatic_boots")))));
         
         TURTLE_SCALE_BLOCK = registerItem("turtle_scale_block",
                 new Item(new Item.Settings().rarity(Rarity.UNCOMMON).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "turtle_scale_block")))));
-        
-        AETHELON_SPAWN_EGG = registerItem("aethelon_spawn_egg",
-                new net.minecraft.item.SpawnEggItem(com.bvhfve.aethelon.registry.ModEntityTypes.AETHELON, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "aethelon_spawn_egg")))));
     }
     
     /**
@@ -117,5 +114,15 @@ public class ModItems {
         // This ensures all items are registered
         Item dummy = ANCIENT_TURTLE_SCALE;
         Aethelon.LOGGER.info("Registering custom items for {}", Aethelon.MOD_ID);
+    }
+    
+    /**
+     * Register spawn eggs after entity types are initialized
+     */
+    public static void registerSpawnEggs() {
+        AETHELON_SPAWN_EGG = registerItem("aethelon_spawn_egg",
+                new net.minecraft.item.SpawnEggItem(com.bvhfve.aethelon.registry.ModEntityTypes.AETHELON, 
+                    new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "aethelon_spawn_egg")))));
+        Aethelon.LOGGER.info("Registered spawn eggs for {}", Aethelon.MOD_ID);
     }
 }

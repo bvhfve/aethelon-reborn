@@ -10,7 +10,8 @@
     "FishingBobberEntityMixin",
     "LivingEntityMixin",
     "StructureTemplateMixin",
-    "ChunkGeneratorMixin"
+    "ChunkGeneratorMixin",
+    "TurtleShellShieldMixin"
   ],
   "client": [
   ],

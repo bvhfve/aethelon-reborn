@@ -1,0 +1,13 @@
+v1	named	intermediary
+FIELD	com/bvhfve/aethelon/mixin/AethelonEntityCollisionMixin	Lnet/minecraft/util/math/Box;	boundingBox	field_6005
+METHOD	com/bvhfve/aethelon/mixin/AethelonEntityCollisionMixin	()Lnet/minecraft/entity/EntityType;	getType	method_5864
+METHOD	com/bvhfve/aethelon/mixin/AethelonEntityCollisionMixin	()Lnet/minecraft/world/World;	getWorld	method_37908
+METHOD	com/bvhfve/aethelon/mixin/AethelonEntityCollisionMixin	()Lnet/minecraft/util/math/Vec3d;	getVelocity	method_18798
+METHOD	com/bvhfve/aethelon/mixin/AethelonEntityCollisionMixin	()D	getY	method_23318
+METHOD	com/bvhfve/aethelon/mixin/AethelonEntityCollisionMixin	()Lnet/minecraft/util/math/Vec3d;	getPos	method_19538
+METHOD	com/bvhfve/aethelon/mixin/AethelonEntityCollisionMixin	()F	getHeight	method_17682
+METHOD	com/bvhfve/aethelon/mixin/AethelonEntityCollisionMixin	()Z	isAlive	method_5805
+METHOD	com/bvhfve/aethelon/mixin/AethelonEntityCollisionMixin	()Z	isLiving	method_5709
+METHOD	com/bvhfve/aethelon/mixin/AethelonEntityCollisionMixin	()Z	isSneaking	method_5715
+METHOD	com/bvhfve/aethelon/mixin/FishingBobberEntityMixin	()Lnet/minecraft/entity/player/PlayerEntity;	getPlayerOwner	method_6947
+METHOD	com/bvhfve/aethelon/mixin/TurtleShellShieldMixin	(Lnet/minecraft/stat/Stat;)V	incrementStat	method_7259
