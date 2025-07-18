@@ -18,8 +18,8 @@ The Aethelon mod features three types of special islands that spawn under specif
 
 #### Basic Conditions (All Special Islands)
 - Must be in deep ocean biomes
-- Minimum 5000 blocks from world spawn (configurable)
-- Minimum 2000 blocks from other special islands (configurable)
+- Minimum 500 blocks from world spawn (configurable)
+- Minimum 200 blocks from other special islands (configurable)
 - Player must be within 100 blocks to witness the spawn
 - Turtle must not already have an island
 
@@ -51,8 +51,8 @@ All special island settings can be configured in `aethelon.json`:
 {
   "enable_special_islands": true,
   "special_island_spawn_multiplier": 1.0,
-  "min_distance_from_spawn_for_special": 5000,
-  "min_distance_between_special_islands": 2000,
+  "min_distance_from_spawn_for_special": 500,
+  "min_distance_between_special_islands": 200,
   "max_boss_islands_per_world": 3,
   "max_treasure_islands_per_world": 8,
   "max_mystical_islands_per_world": 5,

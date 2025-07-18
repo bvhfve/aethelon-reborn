@@ -24,7 +24,7 @@ public class AethelonConfig {
     public int water_depth_required = 30; // Minimum water depth for spawning
     public int clearance_above_required = 50; // Minimum clear space above for shell/island
     public float turtle_size_scale = 4.0f; // Size multiplier for turtle (affects hitbox and appearance)
-    public float spawn_rarity = 0.1f; // Spawn chance (0.0 to 1.0, where 0.1 = 10% chance)
+    public float spawn_rarity = 0.5f; // Spawn chance (0.0 to 1.0, where 0.5 = 50% chance)
     
     // Additional spawn settings
     public int max_world_population = 3;

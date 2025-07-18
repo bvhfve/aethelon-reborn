@@ -75,16 +75,20 @@ public class ModItems {
                 new Item(new Item.Settings().rarity(Rarity.RARE).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "deep_sea_pearl")))));
         
         TURTLE_SHELL_HELMET = registerItem("turtle_shell_helmet",
-                new Item(new Item.Settings().rarity(Rarity.RARE).maxDamage(275).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "turtle_shell_helmet")))));
+                new TurtleShellArmorItem(TurtleShellArmorMaterial.TURTLE_SHELL_ARMOR_MATERIAL, net.minecraft.item.equipment.EquipmentType.HELMET, 
+                    new Item.Settings().rarity(Rarity.RARE).maxDamage(275).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "turtle_shell_helmet")))));
         
         TURTLE_SHELL_CHESTPLATE = registerItem("turtle_shell_chestplate",
-                new Item(new Item.Settings().rarity(Rarity.RARE).maxDamage(400).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "turtle_shell_chestplate")))));
+                new TurtleShellArmorItem(TurtleShellArmorMaterial.TURTLE_SHELL_ARMOR_MATERIAL, net.minecraft.item.equipment.EquipmentType.CHESTPLATE,
+                    new Item.Settings().rarity(Rarity.RARE).maxDamage(400).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "turtle_shell_chestplate")))));
         
         TURTLE_SHELL_LEGGINGS = registerItem("turtle_shell_leggings",
-                new Item(new Item.Settings().rarity(Rarity.RARE).maxDamage(375).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "turtle_shell_leggings")))));
+                new TurtleShellArmorItem(TurtleShellArmorMaterial.TURTLE_SHELL_ARMOR_MATERIAL, net.minecraft.item.equipment.EquipmentType.LEGGINGS,
+                    new Item.Settings().rarity(Rarity.RARE).maxDamage(375).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "turtle_shell_leggings")))));
         
         TURTLE_SHELL_BOOTS = registerItem("turtle_shell_boots",
-                new Item(new Item.Settings().rarity(Rarity.RARE).maxDamage(325).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "turtle_shell_boots")))));
+                new TurtleShellArmorItem(TurtleShellArmorMaterial.TURTLE_SHELL_ARMOR_MATERIAL, net.minecraft.item.equipment.EquipmentType.BOOTS,
+                    new Item.Settings().rarity(Rarity.RARE).maxDamage(325).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "turtle_shell_boots")))));
         
         ANCIENT_TRIDENT = registerItem("ancient_trident",
                 new AncientTridentItem(new Item.Settings().rarity(Rarity.EPIC).maxDamage(350).attributeModifiers(TridentItem.createAttributeModifiers()).registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Aethelon.MOD_ID, "ancient_trident")))));
